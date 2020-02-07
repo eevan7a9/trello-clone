@@ -45,14 +45,14 @@ nav {
     list-style: none;
     a {
       border-radius: 5px;
-      background: rgb(173, 173, 173);
+      background: hsla(0, 0%, 100%, 0.3);
       &:hover {
         text-decoration: none;
       }
     }
     li {
       border-radius: 5px;
-      background: rgb(173, 173, 173);
+      background: hsla(0, 0%, 100%, 0.3);
       &.user-icon {
         border-radius: 50%;
         width: 35px;
