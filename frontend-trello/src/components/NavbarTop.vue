@@ -1,0 +1,67 @@
+<template>
+  <nav class="bg-success text-light d-flex justify-content-between align-items-center">
+    <ul class="d-flex align-items-center m-0">
+      <router-link to="/" class="p-1">
+        <img src="@/assets/icons/home.svg" alt="home" />
+      </router-link>
+
+      <a class="text-light font-weight-bold p-1 m-1">
+        <img src="@/assets/icons/trello.svg" alt="home" />
+        <span class="px-2">Boards</span>
+      </a>
+    </ul>
+
+    <div class="brand d-flex justify-content-center align-items-center">
+      <img src="@/assets/icons/trello.svg" alt="app" />
+      <span class="brand-title">Trello</span>
+    </div>
+    <ul class="d-flex align-items-center p-2 m-0">
+      <li class="p-1">
+        <img src="@/assets/icons/plus.svg" alt="home" />
+      </li>
+      <li class="p-1 ml-1">
+        <img src="@/assets/icons/info.svg" alt="home" />
+      </li>
+      <li class="p-1 ml-1">
+        <img src="@/assets/icons/bell.svg" alt="home" />
+      </li>
+      <li class="user-icon ml-1 bg-light d-flex align-items-center justify-content-center">
+        <span class="text-primary font-weight-bold">E</span>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped>
+nav {
+  ul {
+    list-style: none;
+    a {
+      border-radius: 5px;
+      background: rgb(173, 173, 173);
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    li {
+      border-radius: 5px;
+      background: rgb(173, 173, 173);
+      &.user-icon {
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+  div {
+    .brand-title {
+      font-family: "Lobster", cursive;
+      font-size: 23px;
+    }
+  }
+}
+</style>
