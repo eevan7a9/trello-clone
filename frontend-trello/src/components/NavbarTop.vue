@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-success text-light d-flex justify-content-between align-items-center">
+  <nav class="text-light d-flex justify-content-between align-items-center">
     <ul class="d-flex align-items-center m-0">
       <router-link to="/" class="p-1">
         <img src="@/assets/icons/home.svg" alt="home" />
@@ -38,6 +38,9 @@ export default {};
 
 <style lang="scss" scoped>
 nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.32);
   ul {
     list-style: none;
     a {
