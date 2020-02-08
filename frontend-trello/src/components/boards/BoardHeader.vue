@@ -2,9 +2,7 @@
   <nav class="p-2">
     <div class="board-title float-left font-weight-bold text-light ml-4 px-3">My Projects</div>
     <div class="float-left text-light d-flex justify-content-center align-items-center mr-3">
-      <span class="board-header-btn p-2 d-flex justify-content-center align-items-center mr-2">
-        <img src="@/assets/icons/star.svg" alt="star" />
-      </span>|
+      <BoardStared></BoardStared>
     </div>
     <div class="float-left text-light d-flex justify-content-center align-items-center mr-3">
       <BoardPartOf></BoardPartOf>|
@@ -29,10 +27,12 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import BoardVisibility from "@/components/boards/buttons/BoardVisibility.vue";
 import BoardPartOf from "@/components/boards/buttons/BoardPartOf.vue";
+import BoardStared from "@/components/boards/buttons/BoardStared.vue";
 @Component({
   components: {
     BoardVisibility,
-    BoardPartOf
+    BoardPartOf,
+    BoardStared
   }
 })
 export default class BoardHeader extends Vue {}
