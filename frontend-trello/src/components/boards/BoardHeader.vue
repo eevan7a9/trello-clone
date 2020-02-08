@@ -11,9 +11,7 @@
       <BoardVisibility></BoardVisibility>|
     </div>
     <div class="float-left text-light d-flex justify-content-center align-items-center mr-3">
-      <span class="board-header-btn p-2 d-flex justify-content-center align-items-center mr-2">
-        <img src="@/assets/icons/globe.svg" alt="star" class="mr-2" /> Public
-      </span>|
+      <BoardInvite></BoardInvite>
     </div>
     <div class="float-right text-light d-flex justify-content-center align-items-center mr-3">
       <span class="board-header-btn p-2 d-flex justify-content-center align-items-center mr-2">
@@ -28,11 +26,13 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import BoardVisibility from "@/components/boards/buttons/BoardVisibility.vue";
 import BoardPartOf from "@/components/boards/buttons/BoardPartOf.vue";
 import BoardStared from "@/components/boards/buttons/BoardStared.vue";
+import BoardInvite from "@/components/boards/buttons/BoardInvite.vue";
 @Component({
   components: {
     BoardVisibility,
     BoardPartOf,
-    BoardStared
+    BoardStared,
+    BoardInvite
   }
 })
 export default class BoardHeader extends Vue {}
