@@ -7,6 +7,9 @@
       </span>|
     </div>
     <div class="float-left text-light d-flex justify-content-center align-items-center mr-3">
+      <BoardPartOf></BoardPartOf>|
+    </div>
+    <div class="float-left text-light d-flex justify-content-center align-items-center mr-3">
       <BoardVisibility></BoardVisibility>|
     </div>
     <div class="float-left text-light d-flex justify-content-center align-items-center mr-3">
@@ -25,9 +28,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import BoardVisibility from "@/components/boards/buttons/BoardVisibility.vue";
+import BoardPartOf from "@/components/boards/buttons/BoardPartOf.vue";
 @Component({
   components: {
-    BoardVisibility
+    BoardVisibility,
+    BoardPartOf
   }
 })
 export default class BoardHeader extends Vue {}
