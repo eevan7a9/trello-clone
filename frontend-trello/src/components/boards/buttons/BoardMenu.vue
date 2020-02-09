@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown" v-if="!sidebarStatus">
     <button
       @click="toggleSidebar"
       class="board-header-btn text-light p-2 d-flex justify-content-center align-items-center mr-2"
@@ -13,8 +13,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { mapGetters } from "vuex";
 
-@Component
+@Component({
+  computed: mapGetters(["sidebarStatus"])
+})
 export default class BoardMenu extends Vue {
   toggleSidebar() {
     console.log("toggle menu...");
