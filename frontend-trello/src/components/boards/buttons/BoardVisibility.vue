@@ -7,7 +7,7 @@
       <img :src="require(`@/assets/icons/${selected.icon}-white.svg`)" alt="star" class="mr-2" />
       <span>{{selected.label}}</span>
     </button>
-    <div class="dropdown-content mt-2 pb-3" :class="{'active': dropdownStatus}">
+    <div class="dropdown-content mt-2 pb-3" :class="{'active': popupsValue === dropdownOf}">
       <header class="py-2 px-1 m-0 row">
         <span class="col-md-10 text-capitalize text-muted m-0 pl-5">change Visibility</span>
         <span class="close-icon col-md-2 m-0" @click="toggleDropdown">
@@ -32,8 +32,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { mapGetters } from "vuex";
 
-@Component
+@Component({
+  computed: {
+    ...mapGetters(["popupsValue"])
+  }
+})
 export default class BoardVisibility extends Vue {
   selected: object = {
     label: "Public",
@@ -58,10 +63,10 @@ export default class BoardVisibility extends Vue {
       icon: "globe"
     }
   ];
-  dropdownStatus = false;
+  dropdownOf = "visibility";
 
   toggleDropdown() {
-    this.dropdownStatus = !this.dropdownStatus;
+    this.$store.dispatch("togglePopups", this.dropdownOf);
   }
   selectVisibilityType(visibility: object) {
     this.selected = visibility;

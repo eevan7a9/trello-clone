@@ -6,7 +6,7 @@
     >
       <span class="text-capitalize">{{selected}}</span>
     </button>
-    <div class="dropdown-content mt-2 pb-3" :class="{'active': dropdownStatus}">
+    <div class="dropdown-content mt-2 pb-3" :class="{'active': popupsValue === dropdownOf}">
       <header class="py-2 px-1 m-0 row">
         <span class="col-md-10 text-capitalize text-muted m-0 pl-5">Add to a team</span>
         <span class="close-icon col-md-2 m-0" @click="toggleDropdown">
@@ -35,12 +35,17 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { mapGetters } from "vuex";
 
-@Component
+@Component({
+  computed: {
+    ...mapGetters(["popupsValue"])
+  }
+})
 export default class BoardPartOf extends Vue {
   selected = "personal";
   boardPartOf = "personal";
-  dropdownStatus = false;
+  dropdownOf = "partOf";
   teams: Array<object> = [
     { label: "Avengers", type: "team" },
     { label: "Trello Developers", type: "team" },
@@ -48,7 +53,7 @@ export default class BoardPartOf extends Vue {
   ];
 
   toggleDropdown() {
-    this.dropdownStatus = !this.dropdownStatus;
+    this.$store.dispatch("togglePopups", this.dropdownOf);
   }
   addPartOf() {
     this.selected = this.boardPartOf;

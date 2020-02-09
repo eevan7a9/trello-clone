@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <button
-      @click="toggleDropdown"
+      @click="toggleSidebar"
       class="board-header-btn text-light p-2 d-flex justify-content-center align-items-center mr-2"
     >
       <span class="text-capitalize">
@@ -16,8 +16,10 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class BoardMenu extends Vue {
-  toggleDropdown() {
+  toggleSidebar() {
     console.log("toggle menu...");
+    this.$store.dispatch("toggleMenuSidebar");
+    this.$store.dispatch("togglePopups");
   }
 }
 </script>

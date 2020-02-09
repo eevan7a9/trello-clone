@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center align-items-center">
     <button
       class="board-header-btn p-2 d-flex justify-content-center align-items-center mr-2"
-      @click="selected=!selected"
+      @click="toggleStar"
     >
       <img src="@/assets/icons/star.svg" alt="star" v-if="!selected" />
       <img src="@/assets/icons/star-yellow.svg" alt="star" v-else />
@@ -16,6 +16,10 @@ import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class BoardStared extends Vue {
   selected = false;
+  toggleStar() {
+    this.selected = !this.selected;
+    this.$store.dispatch("togglePopups", "");
+  }
 }
 </script>
 
