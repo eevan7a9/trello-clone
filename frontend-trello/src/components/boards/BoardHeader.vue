@@ -14,9 +14,7 @@
       <BoardInvite></BoardInvite>
     </div>
     <div class="float-right text-light d-flex justify-content-center align-items-center mr-3">
-      <span class="board-header-btn p-2 d-flex justify-content-center align-items-center mr-2">
-        <img src="@/assets/icons/more-horizontal.svg" alt="star" class="mr-2" /> Show Menu
-      </span>
+      <BoardMenu></BoardMenu>
     </div>
   </nav>
 </template>
@@ -27,12 +25,14 @@ import BoardVisibility from "@/components/boards/buttons/BoardVisibility.vue";
 import BoardPartOf from "@/components/boards/buttons/BoardPartOf.vue";
 import BoardStared from "@/components/boards/buttons/BoardStared.vue";
 import BoardInvite from "@/components/boards/buttons/BoardInvite.vue";
+import BoardMenu from "@/components/boards/buttons/BoardMenu.vue";
 @Component({
   components: {
     BoardVisibility,
     BoardPartOf,
     BoardStared,
-    BoardInvite
+    BoardInvite,
+    BoardMenu
   }
 })
 export default class BoardHeader extends Vue {}
@@ -54,8 +54,8 @@ nav {
     background-color: rgba(0, 0, 0, 0.219);
     border-radius: 5px;
     img {
-      height: 20px;
-      width: 20px;
+      height: 15px;
+      width: 15px;
     }
   }
 }
