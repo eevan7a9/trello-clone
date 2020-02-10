@@ -25,8 +25,8 @@
       <li class="pl-1">
         <BoardNotification></BoardNotification>
       </li>
-      <li class="p-1 user-icon ml-1 bg-light d-flex align-items-center justify-content-center">
-        <span class="text-primary font-weight-bold">E</span>
+      <li class="pl-1">
+        <BoardAccount></BoardAccount>
       </li>
     </ul>
   </nav>
@@ -36,11 +36,13 @@
 import BoardCreate from "@/components/boards/buttons/BoardCreate.vue";
 import BoardInfo from "@/components/boards/buttons/BoardInfo.vue";
 import BoardNotification from "@/components/boards/buttons/BoardNotification.vue";
+import BoardAccount from "@/components/boards/buttons/BoardAccount.vue";
 export default {
   components: {
     BoardCreate,
     BoardInfo,
-    BoardNotification
+    BoardNotification,
+    BoardAccount
   }
 };
 </script>
