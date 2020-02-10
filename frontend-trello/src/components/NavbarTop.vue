@@ -16,16 +16,16 @@
       <span class="brand-title">Trello</span>
     </div>
     <ul class="d-flex align-items-center p-2 m-0">
-      <li class="p-1">
-        <img src="@/assets/icons/plus.svg" alt="home" />
+      <li class>
+        <BoardCreate></BoardCreate>
       </li>
-      <li class="p-1 ml-1">
+      <li class="p-1 p-1 ml-1">
         <img src="@/assets/icons/info.svg" alt="home" />
       </li>
-      <li class="p-1 ml-1">
+      <li class="p-1 p-1 ml-1">
         <img src="@/assets/icons/bell.svg" alt="home" />
       </li>
-      <li class="user-icon ml-1 bg-light d-flex align-items-center justify-content-center">
+      <li class="p-1 user-icon ml-1 bg-light d-flex align-items-center justify-content-center">
         <span class="text-primary font-weight-bold">E</span>
       </li>
     </ul>
@@ -33,12 +33,18 @@
 </template>
 
 <script>
-export default {};
+import BoardCreate from "@/components/boards/buttons/BoardCreate.vue";
+export default {
+  components: {
+    BoardCreate
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 nav {
   position: fixed;
+  z-index: 1;
   width: 100%;
   background: rgba(0, 0, 0, 0.32);
   ul {
@@ -50,7 +56,7 @@ nav {
         text-decoration: none;
       }
     }
-    li {
+    .nav-list-item {
       border-radius: 5px;
       background: hsla(0, 0%, 100%, 0.3);
       &.user-icon {
