@@ -22,8 +22,8 @@
       <li class="pl-1">
         <BoardInfo></BoardInfo>
       </li>
-      <li class="p-1 p-1 ml-1">
-        <img src="@/assets/icons/bell.svg" alt="home" />
+      <li class="pl-1">
+        <BoardNotification></BoardNotification>
       </li>
       <li class="p-1 user-icon ml-1 bg-light d-flex align-items-center justify-content-center">
         <span class="text-primary font-weight-bold">E</span>
@@ -35,10 +35,12 @@
 <script>
 import BoardCreate from "@/components/boards/buttons/BoardCreate.vue";
 import BoardInfo from "@/components/boards/buttons/BoardInfo.vue";
+import BoardNotification from "@/components/boards/buttons/BoardNotification.vue";
 export default {
   components: {
     BoardCreate,
-    BoardInfo
+    BoardInfo,
+    BoardNotification
   }
 };
 </script>
