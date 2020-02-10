@@ -2,7 +2,7 @@
   <div class="dropdown">
     <button
       @click="toggleDropdown"
-      class="board-header-btn text-light p-1 d-flex justify-content-center align-items-center mr-2"
+      class="board-header-btn text-light p-1 d-flex justify-content-center align-items-center"
     >
       <img src="@/assets/icons/plus.svg" alt="home" />
     </button>

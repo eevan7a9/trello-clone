@@ -16,11 +16,11 @@
       <span class="brand-title">Trello</span>
     </div>
     <ul class="d-flex align-items-center p-2 m-0">
-      <li class>
+      <li class="pl-1">
         <BoardCreate></BoardCreate>
       </li>
-      <li class="p-1 p-1 ml-1">
-        <img src="@/assets/icons/info.svg" alt="home" />
+      <li class="pl-1">
+        <BoardInfo></BoardInfo>
       </li>
       <li class="p-1 p-1 ml-1">
         <img src="@/assets/icons/bell.svg" alt="home" />
@@ -34,9 +34,11 @@
 
 <script>
 import BoardCreate from "@/components/boards/buttons/BoardCreate.vue";
+import BoardInfo from "@/components/boards/buttons/BoardInfo.vue";
 export default {
   components: {
-    BoardCreate
+    BoardCreate,
+    BoardInfo
   }
 };
 </script>
