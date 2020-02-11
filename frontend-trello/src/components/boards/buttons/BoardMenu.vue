@@ -22,7 +22,6 @@ export default class BoardMenu extends Vue {
   toggleSidebar() {
     console.log("toggle menu...");
     this.$store.dispatch("toggleMenuSidebar");
-    this.$store.dispatch("togglePopups");
   }
 }
 </script>

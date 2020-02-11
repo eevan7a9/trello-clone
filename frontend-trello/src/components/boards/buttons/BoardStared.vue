@@ -18,7 +18,6 @@ export default class BoardStared extends Vue {
   selected = false;
   toggleStar() {
     this.selected = !this.selected;
-    this.$store.dispatch("togglePopups", "");
   }
 }
 </script>

@@ -4,14 +4,14 @@ import Vue from "vue";
 // document's click handler
 let handleOutsideClick;
 
-Vue.directive("closable", {
+Vue.directive("click-outside", {
   bind(el, binding, vnode) {
     // Here's the click/touchstart handler
     // (it is registered below)
     handleOutsideClick = e => {
       e.stopPropagation();
       // Get the handler method name and the exclude array
-      // from the object used in v-closable
+      // from the object used in v-click-outside
       const { handler, exclude } = binding.value;
 
       // This variable indicates if the clicked element is excluded
@@ -43,7 +43,7 @@ Vue.directive("closable", {
   },
 
   unbind() {
-    // If the element that has v-closable is removed, then
+    // If the element that has v-click-outside is removed, then
     // unbind click/touchstart listeners from the whole page
     document.removeEventListener("click", handleOutsideClick);
     document.removeEventListener("touchstart", handleOutsideClick);
