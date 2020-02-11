@@ -1,10 +1,13 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown" v-click-outside="{
+    exclude: [],
+    handler: 'onClose'
+  }">
     <button
       @click="toggleDropdown"
       class="board-header-btn text-light bg-primary font-weight-bold p-1 d-flex justify-content-center align-items-center"
     >E</button>
-    <div class="dropdown-content mt-3 mr-2 pb-3" :class="{'active': popupsValue === dropdownOf}">
+    <div class="dropdown-content mt-3 mr-2 pb-3" :class="{'active': isShown}">
       <header class="py-2 px-1 m-0 row">
         <span class="col-md-10 text-capitalize text-muted m-0 pl-5">{{user}}(evan.asia)</span>
         <span class="close-icon col-md-2 m-0" @click="toggleDropdown">
@@ -64,19 +67,19 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { mapGetters } from "vuex";
 
-@Component({
-  computed: {
-    ...mapGetters(["popupsValue"])
-  }
-})
+@Component
 export default class BoardAccount extends Vue {
   user = "Evan";
-  dropdownOf = "account";
+  isShown = false;
 
   toggleDropdown() {
-    this.$store.dispatch("togglePopups", this.dropdownOf);
+    this.isShown = !this.isShown;
+  }
+  onClose() {
+    if (this.isShown) {
+      this.isShown = !this.isShown;
+    }
   }
 }
 </script>

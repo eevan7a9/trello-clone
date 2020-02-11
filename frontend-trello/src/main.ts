@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
-import "./directives/clickedOutside"; // custom Directive for detecting clicked outside
+import "./directives/clickeOutside"; // custom Directive for detecting clicked outside
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

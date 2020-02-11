@@ -1,5 +1,8 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown" v-click-outside="{
+    exclude: [],
+    handler: 'onClose'
+  }">
     <button
       @click="toggleDropdown"
       class="board-header-btn text-light p-2 d-flex justify-content-center align-items-center mr-2"
@@ -7,7 +10,7 @@
       <img :src="require(`@/assets/icons/${selected.icon}-white.svg`)" alt="star" class="mr-2" />
       <span>{{selected.label}}</span>
     </button>
-    <div class="dropdown-content mt-2 pb-3" :class="{'active': popupsValue === dropdownOf}">
+    <div class="dropdown-content mt-2 pb-3" :class="{'active': isShown}">
       <header class="py-2 px-1 m-0 row">
         <span class="col-md-10 text-capitalize text-muted m-0 pl-5">change Visibility</span>
         <span class="close-icon col-md-2 m-0" @click="toggleDropdown">
@@ -63,10 +66,15 @@ export default class BoardVisibility extends Vue {
       icon: "globe"
     }
   ];
-  dropdownOf = "visibility";
+  isShown = false;
 
   toggleDropdown() {
-    this.$store.dispatch("togglePopups", this.dropdownOf);
+    this.isShown = !this.isShown;
+  }
+  onClose() {
+    if (this.isShown) {
+      this.isShown = !this.isShown;
+    }
   }
   selectVisibilityType(visibility: object) {
     this.selected = visibility;

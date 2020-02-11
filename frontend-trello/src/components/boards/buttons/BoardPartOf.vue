@@ -1,12 +1,15 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown" v-click-outside="{
+    exclude: [],
+    handler: 'onClose'
+  }">
     <button
       @click="toggleDropdown"
       class="board-header-btn text-light p-2 d-flex justify-content-center align-items-center mr-2"
     >
       <span class="text-capitalize">{{selected}}</span>
     </button>
-    <div class="dropdown-content mt-2 pb-3" :class="{'active': popupsValue === dropdownOf}">
+    <div class="dropdown-content mt-2 pb-3" :class="{'active': isShown}">
       <header class="py-2 px-1 m-0 row">
         <span class="col-md-10 text-capitalize text-muted m-0 pl-5">Add to a team</span>
         <span class="close-icon col-md-2 m-0" @click="toggleDropdown">
@@ -43,9 +46,9 @@ import { mapGetters } from "vuex";
   }
 })
 export default class BoardPartOf extends Vue {
+  isShown = false;
   selected = "personal";
   boardPartOf = "personal";
-  dropdownOf = "partOf";
   teams: Array<object> = [
     { label: "Avengers", type: "team" },
     { label: "Trello Developers", type: "team" },
@@ -53,7 +56,12 @@ export default class BoardPartOf extends Vue {
   ];
 
   toggleDropdown() {
-    this.$store.dispatch("togglePopups", this.dropdownOf);
+    this.isShown = !this.isShown;
+  }
+  onClose() {
+    if (this.isShown) {
+      this.isShown = !this.isShown;
+    }
   }
   addPartOf() {
     this.selected = this.boardPartOf;
