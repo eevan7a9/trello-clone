@@ -5,10 +5,9 @@
         <img src="@/assets/icons/home.svg" alt="home" />
       </router-link>
 
-      <a class="text-light font-weight-bold p-1 m-1">
-        <img src="@/assets/icons/trello.svg" alt="home" />
-        <span class="px-2">Boards</span>
-      </a>
+      <li class="m-1">
+        <BoardList></BoardList>
+      </li>
     </ul>
 
     <div class="brand d-flex justify-content-center align-items-center">
@@ -33,12 +32,14 @@
 </template>
 
 <script>
+import BoardList from "@/components/boards/buttons/BoardList.vue";
 import BoardCreate from "@/components/boards/buttons/BoardCreate.vue";
 import BoardInfo from "@/components/boards/buttons/BoardInfo.vue";
 import BoardNotification from "@/components/boards/buttons/BoardNotification.vue";
 import BoardAccount from "@/components/boards/buttons/BoardAccount.vue";
 export default {
   components: {
+    BoardList,
     BoardCreate,
     BoardInfo,
     BoardNotification,
