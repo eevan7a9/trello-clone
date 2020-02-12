@@ -12,7 +12,7 @@
 // @ is an alias to /src
 import BoardView from "@/components/boards/BoardView.vue";
 import BoardHeader from "@/components/boards/BoardHeader.vue";
-import BoardMenubar from "@/components/boards/BoardMenubar.vue";
+import BoardMenubar from "@/components/boards/menubar/BoardMenubar.vue";
 export default {
   name: "Home",
   components: {

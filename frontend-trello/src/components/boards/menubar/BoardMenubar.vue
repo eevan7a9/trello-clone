@@ -8,7 +8,13 @@
     </header>
 
     <div class="menubar-content">
-      <h3>{{dummyData}}</h3>
+      <div class="menubar-items p-4">
+        <div v-for="(list, index) of lists" :key="index" class="text-left">
+          <img :src="require(`@/assets/icons/${list.icon}`)" class="m-2" />
+          <span class="text-capitalize font-weight-bold text-dark">{{list.title}}</span>
+        </div>
+        <hr />
+      </div>
     </div>
   </div>
 </template>
@@ -22,6 +28,12 @@ import { mapGetters } from "vuex";
 })
 export default class BoardMenubar extends Vue {
   dummyData = "Loading...";
+  lists = [
+    { icon: "trello-dark.svg", title: "about this board" },
+    { icon: "square-grey.svg", title: "change background" },
+    { icon: "search-grey.svg", title: "search cards" },
+    { icon: "sticker-grey.svg", title: "stickers" }
+  ];
   toggleMenu() {
     this.$store.dispatch("toggleMenuSidebar");
   }
@@ -52,6 +64,21 @@ export default class BoardMenubar extends Vue {
   }
   .menubar-content {
     opacity: 0;
+    .menubar-items {
+      div {
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          background: rgba(128, 128, 128, 0.301);
+        }
+        img {
+          height: 20px;
+        }
+        span {
+          font-size: 14px;
+        }
+      }
+    }
   }
 }
 </style>
