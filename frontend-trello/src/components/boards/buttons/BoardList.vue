@@ -28,20 +28,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Ref, Vue } from "vue-property-decorator";
 
 @Component
 export default class BoardList extends Vue {
-  // @Ref() readonly searchBoard!: HTMLInputElement;
-  $refs!: {
-    searchBoard: HTMLInputElement;
-  };
+  @Ref() readonly searchBoard!: HTMLInputElement;
 
   isShown = false;
 
   toggleDropdown() {
     this.isShown = !this.isShown;
-    this.$nextTick(() => this.$refs.searchBoard.focus());
+    this.$nextTick(() => this.searchBoard.focus());
   }
   onClose() {
     if (this.isShown) {
