@@ -32,6 +32,7 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class BoardList extends Vue {
+  // @Ref() readonly searchBoard!: HTMLInputElement;
   $refs!: {
     searchBoard: HTMLInputElement;
   };
@@ -40,10 +41,7 @@ export default class BoardList extends Vue {
 
   toggleDropdown() {
     this.isShown = !this.isShown;
-
-    setTimeout(() => {
-      this.$refs.searchBoard.focus();
-    }, 50);
+    this.$nextTick(() => this.$refs.searchBoard.focus());
   }
   onClose() {
     if (this.isShown) {
