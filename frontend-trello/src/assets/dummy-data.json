@@ -1,0 +1,131 @@
+{
+  "users": [
+    {
+      "id": 101,
+      "name": "Evan",
+      "nickname": "evan.asia",
+      "status": "Still Alive"
+    },
+    {
+      "id": 231,
+      "name": "Luffy",
+      "nickname": "Strawhat",
+      "status": "A Pirates life"
+    },
+    {
+      "id": 333,
+      "name": "Nami",
+      "nickname": "Cat Burgler",
+      "status": "A Treasure lover"
+    }
+  ],
+  "boards": [
+    {
+      "id": 1,
+      "title": "My Projects",
+      "lists": [],
+      "adminId": 101,
+      "members": []
+    },
+    {
+      "id": 2,
+      "title": "Marketing Online",
+      "lists": [],
+      "adminId": 101,
+      "members": []
+    },
+    {
+      "id": 3,
+      "title": "Code Review",
+      "lists": [],
+      "adminId": 101,
+      "members": []
+    }
+  ],
+  "lists": [
+    {
+      "id": 1,
+      "boardId": 1,
+      "title": "List One",
+      "cards": []
+    },
+    {
+      "id": 2,
+      "boardId": 1,
+      "title": "List Two",
+      "cards": []
+    },
+    {
+      "id": 3,
+      "boardId": 1,
+      "title": "List Three",
+      "cards": []
+    },
+    {
+      "id": 4,
+      "boardId": 1,
+      "title": "List Four",
+      "cards": []
+    },
+    {
+      "id": 5,
+      "boardId": 1,
+      "title": "List Five",
+      "cards": []
+    },
+    {
+      "id": 6,
+      "boardId": 1,
+      "title": "List six",
+      "cards": []
+    },
+    {
+      "id": 7,
+      "boardId": 2,
+      "title": "List seven",
+      "cards": []
+    },
+    {
+      "id": 8,
+      "boardId": 1,
+      "title": "List eight",
+      "cards": []
+    },
+    {
+      "id": 9,
+      "boardId": 1,
+      "title": "List Nine",
+      "cards": []
+    },
+    {
+      "id": 10,
+      "boardId": 1,
+      "title": "List Ten",
+      "cards": []
+    },
+    {
+      "id": 11,
+      "boardId": 1,
+      "title": "List eleven",
+      "cards": []
+    },
+    {
+      "id": 12,
+      "boardId": 2,
+      "title": "List twelve",
+      "cards": []
+    },
+    {
+      "id": 13,
+      "boardId": 1,
+      "title": "List thirteen",
+      "cards": []
+    },
+    {
+      "id": 14,
+      "boardId": 1,
+      "title": "List fourteen",
+      "cards": []
+    }
+  ]
+}
