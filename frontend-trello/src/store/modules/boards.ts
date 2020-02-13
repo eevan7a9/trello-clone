@@ -31,6 +31,10 @@ export default class Boards extends VuexModule {
   }) {
     this.board = boardData;
   }
+  @Mutation
+  public updateBoardLists(lists: Array<object>) {
+    this.board.lists = lists;
+  }
 
   @Action
   public async getBoardData(id: number) {

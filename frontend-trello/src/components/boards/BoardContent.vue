@@ -1,6 +1,5 @@
 <template>
   <div class="content-wrapper text-left">
-    {{currentBoard}}
     <div class="lists-container d-flex">
       <draggable
         class="list-group"
@@ -18,7 +17,6 @@
             :key="list.id"
           >
             <h1>{{list.title}}</h1>
-            <button @click="test(1)">l</button>
           </div>
         </transition-group>
       </draggable>
@@ -27,20 +25,21 @@
 </template>
 
 <script>
-import dummyData from "@/assets/dummy-data.json";
 import draggable from "vuedraggable";
 import { mapGetters } from "vuex";
 export default {
   components: {
     draggable
   },
-  data() {
-    return {
-      lists: dummyData.lists
-    };
-  },
   computed: {
-    ...mapGetters(["currentBoard"]),
+    lists: {
+      get() {
+        return this.$store.state.Boards.board.lists;
+      },
+      set(value) {
+        this.$store.commit("updateBoardLists", value);
+      }
+    },
     dragOptions() {
       return {
         animation: 0,
@@ -50,10 +49,9 @@ export default {
       };
     }
   },
-  methods: {
-    test(id) {
-      this.$store.dispatch("getBoardData", id);
-    }
+  methods: {},
+  created() {
+    this.$store.dispatch("getBoardData", 1);
   }
 };
 </script>
