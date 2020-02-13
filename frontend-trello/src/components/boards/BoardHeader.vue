@@ -40,6 +40,7 @@ export default class BoardHeader extends Vue {}
 
 <style lang="scss" scoped>
 nav {
+  width: 100vw;
   .board-title {
     background: transparent;
     font-size: 18px;
@@ -49,14 +50,6 @@ nav {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  .board-header-btn {
-    background-color: rgba(0, 0, 0, 0.219);
-    border-radius: 5px;
-    img {
-      height: 15px;
-      width: 15px;
-    }
   }
 }
 </style>

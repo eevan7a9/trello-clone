@@ -50,9 +50,11 @@ export default {
 
 <style lang="scss" scoped>
 nav {
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 1;
   width: 100%;
+  height: 50px;
   background: rgba(0, 0, 0, 0.32);
   ul {
     list-style: none;

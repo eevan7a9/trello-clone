@@ -1,7 +1,7 @@
 <template>
-  <div class="home pt-5">
+  <div class="home d-flex flex-column">
+    <BoardHeader />
     <div class="main-board">
-      <BoardHeader />
       <BoardContent class="mt-5" />
     </div>
     <BoardMenubar class="sidebar-board" />
@@ -24,8 +24,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .home {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  height: 100vh;
+  // navbar height is 50px
+  height: calc(100vh - 53px);
+  overflow: hidden;
+  .main-board {
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 100%;
+    background: red;
+  }
 }
 </style>

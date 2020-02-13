@@ -58,8 +58,11 @@ export default class BoardMenubar extends Vue {
 
 <style lang="scss" scoped>
 .side-menubar-wrapper {
+  position: fixed;
+  right: 0;
   display: block;
   width: 0px;
+  height: 100%;
   box-shadow: 0 12px 24px -6px rgba(9, 30, 66, 0.25),
     0 0 0 1px rgba(9, 30, 66, 0.08);
   transition: width 0.3s;
