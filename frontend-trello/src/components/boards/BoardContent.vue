@@ -1,5 +1,6 @@
 <template>
   <div class="content-wrapper text-left">
+    {{currentBoard}}
     <div class="lists-container d-flex">
       <draggable
         class="list-group"
@@ -17,6 +18,7 @@
             :key="list.id"
           >
             <h1>{{list.title}}</h1>
+            <button @click="test(1)">l</button>
           </div>
         </transition-group>
       </draggable>
@@ -25,78 +27,20 @@
 </template>
 
 <script>
+import dummyData from "@/assets/dummy-data.json";
 import draggable from "vuedraggable";
+import { mapGetters } from "vuex";
 export default {
   components: {
     draggable
   },
   data() {
     return {
-      lists: [
-        {
-          id: 1,
-          title: "List One",
-          cards: []
-        },
-        {
-          id: 2,
-          title: "List Two",
-          cards: []
-        },
-        {
-          id: 3,
-          title: "List Three",
-          cards: []
-        },
-        {
-          id: 4,
-          title: "List Four",
-          cards: []
-        },
-        {
-          id: 5,
-          title: "List Five",
-          cards: []
-        },
-        {
-          id: 6,
-          title: "List six",
-          cards: []
-        },
-        {
-          id: 7,
-          title: "List seven",
-          cards: []
-        },
-        {
-          id: 8,
-          title: "List eight",
-          cards: []
-        },
-        {
-          id: 9,
-          title: "List Nine",
-          cards: []
-        },
-        {
-          id: 10,
-          title: "List Ten",
-          cards: []
-        },
-        {
-          id: 11,
-          title: "List eleven",
-          cards: []
-        },
-        {
-          id: 12,
-          title: "List twelve",
-          cards: []
-        }
-      ]
+      lists: dummyData.lists
     };
   },
   computed: {
+    ...mapGetters(["currentBoard"]),
     dragOptions() {
       return {
         animation: 0,
@@ -104,6 +48,11 @@ export default {
         disabled: false,
         ghostClass: "ghost"
       };
+    }
+  },
+  methods: {
+    test(id) {
+      this.$store.dispatch("getBoardData", id);
     }
   }
 };
