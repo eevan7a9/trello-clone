@@ -1,7 +1,7 @@
 <template>
   <div class="home d-flex flex-column">
     <BoardHeader />
-    <div class="main-board">
+    <div class="main-board" v-dragscroll:nochilddrag>
       <BoardContent class="mt-5" />
     </div>
     <BoardMenubar class="sidebar-board" />
@@ -10,6 +10,7 @@
 
 <script>
 // @ is an alias to /src
+import { dragscroll } from "vue-dragscroll";
 import BoardContent from "@/components/boards/BoardContent.vue";
 import BoardHeader from "@/components/boards/BoardHeader.vue";
 import BoardMenubar from "@/components/boards/menubar/BoardMenubar.vue";
@@ -19,6 +20,9 @@ export default {
     BoardHeader,
     BoardContent,
     BoardMenubar
+  },
+  directives: {
+    dragscroll
   }
 };
 </script>
@@ -33,5 +37,18 @@ export default {
     height: 100%;
     background: red;
   }
+}
+.grab-bing {
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -o-grab;
+  cursor: grab;
+}
+
+.grab-bing:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: -o-grabbing;
+  cursor: grabbing;
 }
 </style>
