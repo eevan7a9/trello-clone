@@ -1,5 +1,5 @@
 <template>
-  <div class="px-2 py-1 m-1">
+  <div class="py-1 pt-2 m-1">
     <!-- hedear starts -->
     <header class="d-flex justify-content-between align-items-center">
       <h6 class="m-0 px-3 font-weight-bold">{{list.title}}</h6>
@@ -18,14 +18,14 @@
         @end="isDragging = false"
       >
         <transition-group type="transition" name="flip-list" class="d-flex flex-column">
-          <div class="list-group-item bg-light p-2 mx-2" v-for="card of cards" :key="card.id">
-            <h5>{{card.title}}</h5>
+          <div class="list-group-item bg-light p-0 mb-2 mx-2" v-for="card of cards" :key="card.id">
+            <BoardCard :card="card"></BoardCard>
           </div>
         </transition-group>
       </draggable>
     </div>
     <!-- footer starts -->
-    <footer class="add-card px-1 py-1">
+    <footer class="add-card px-3 py-1">
       <span>
         <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
       </span>
@@ -36,9 +36,11 @@
 </template>
 <script>
 import draggable from "vuedraggable";
+import BoardCard from "@/components/boards/BoardCard";
 export default {
   components: {
-    draggable
+    draggable,
+    BoardCard
   },
   props: {
     list: Object
