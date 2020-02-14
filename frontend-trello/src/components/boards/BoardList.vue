@@ -8,7 +8,7 @@
       </span>
     </header>
     <!-- header ends -->
-    <div class="py-2">
+    <div class="cards-wrapper py-2">
       <draggable
         class="list-group"
         tag="div"
@@ -23,13 +23,24 @@
           </div>
         </transition-group>
       </draggable>
+      <div class="add-card-form px-2" v-show="isAddOpen">
+        <textarea
+          class="px-2 pt-2 pb-5"
+          ref="textarea"
+          cols="1"
+          rows="1"
+          @input="autoGrow"
+          @blur="hideCardFrom"
+          placeholder="Enter a title for this card..."
+        ></textarea>
+      </div>
     </div>
     <!-- footer starts -->
-    <footer class="add-card px-3 py-1">
+    <footer class="add-card px-1 py-1 mx-2">
       <span>
         <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
       </span>
-      <span>Add another card</span>
+      <span @click="showCardForm">Add another card</span>
     </footer>
     <!-- footer ends -->
   </div>
@@ -44,6 +55,11 @@ export default {
   },
   props: {
     list: Object
+  },
+  data() {
+    return {
+      isAddOpen: false
+    };
   },
   computed: {
     cards: {
@@ -64,6 +80,23 @@ export default {
         disabled: false,
         ghostClass: "ghost"
       };
+    }
+  },
+  methods: {
+    autoGrow() {
+      const element = this.$refs.textarea;
+      element.style.height = "5px";
+      // element.style.paddingBottom = "40px";
+      element.style.height = element.scrollHeight + "px";
+    },
+    showCardForm() {
+      this.isAddOpen = true;
+      this.$nextTick(() => {
+        this.$refs.textarea.focus();
+      });
+    },
+    hideCardFrom() {
+      this.isAddOpen = false;
     }
   }
 };
@@ -87,6 +120,20 @@ div {
       img {
         height: 15px;
       }
+    }
+  }
+  .cards-wrapper {
+    overflow: hidden;
+    padding: 2px 4px;
+    position: relative;
+    .add-card-form textarea {
+      font-size: 14px;
+      width: 240px;
+      resize: none;
+      border: none;
+      overflow: hidden;
+      overflow-wrap: break-word;
+      border-radius: 5px;
     }
   }
   .add-card {
