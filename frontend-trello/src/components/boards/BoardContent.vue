@@ -1,6 +1,6 @@
 <template>
   <div class="content-wrapper text-left">
-    <div class="lists-container d-flex">
+    <div class="lists-container d-flex px-2">
       <draggable
         class="list-group"
         tag="div"

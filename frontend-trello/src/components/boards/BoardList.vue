@@ -8,7 +8,7 @@
       </span>
     </header>
     <!-- header ends -->
-    <div class="py-3">
+    <div class="py-2">
       <draggable
         class="list-group"
         tag="div"
@@ -51,8 +51,10 @@ export default {
         return this.list.cards;
       },
       set(value) {
-        // this.$store.commit("updateBoardLists", value);
-        console.log(value);
+        this.$store.commit("updateBoardCards", {
+          cards: value,
+          listId: this.list.id
+        });
       }
     },
     dragOptions() {

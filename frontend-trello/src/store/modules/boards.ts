@@ -1,15 +1,31 @@
 import { Module, VuexModule, Action, Mutation } from "vuex-module-decorators";
 import dummyData from "@/assets/dummy-data.json";
 
+interface Board {
+  id: number;
+  title: string;
+  lists: BoardList[];
+  adminId: number;
+  members: Array<object>;
+}
+interface BoardList {
+  id: number;
+  boardId: number;
+  title: string;
+  cards: BoardCard[];
+}
+interface BoardCard {
+  id: number;
+  listId: number;
+  title: string;
+  desc: string;
+  members: Array<object>;
+  label: string;
+}
+
 @Module
 export default class Boards extends VuexModule {
-  currentBoard: {
-    id: number;
-    title: string;
-    lists: Array<object>;
-    adminId: number;
-    members: Array<object>;
-  } = {
+  currentBoard: Board = {
     id: 0,
     title: "dddd",
     lists: [],
@@ -25,15 +41,24 @@ export default class Boards extends VuexModule {
   public setBoardData(boardData: {
     id: number;
     title: string;
-    lists: Array<object>;
+    lists: BoardList[];
     adminId: number;
     members: Array<object>;
   }) {
     this.currentBoard = boardData;
   }
   @Mutation
-  public updateBoardLists(lists: Array<object>) {
+  public updateBoardLists(lists: BoardList[]) {
     this.currentBoard.lists = lists;
+  }
+  @Mutation
+  public updateBoardCards(payload: { cards: BoardCard[]; listId: number }) {
+    const foundList = this.currentBoard.lists.find(
+      list => list.id == payload.listId
+    );
+    if (foundList) {
+      foundList.cards = payload.cards;
+    }
   }
 
   @Action
