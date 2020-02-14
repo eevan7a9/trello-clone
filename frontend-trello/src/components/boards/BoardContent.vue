@@ -11,12 +11,26 @@
       >
         <transition-group type="transition" name="flip-list" class="d-flex">
           <div
-            class="list-group-item p-2 bg-light mx-2"
-            id="listItem"
+            class="list-group-item p-2 mx-2 d-flex flex-column"
             v-for="list of lists"
             :key="list.id"
           >
-            <h1>{{list.title}}</h1>
+            <!-- hedear starts -->
+            <header class="d-flex justify-content-between align-items-center">
+              <h6 class="m-0 font-weight-bold py-2">{{list.title}}</h6>
+              <span>
+                <img src="@/assets/icons/more-horizontal-dark.svg" alt="star" class="mr-2" />
+              </span>
+            </header>
+            <!-- header ends -->
+            <!-- footer starts -->
+            <footer class="add-card px-1 py-2">
+              <span>
+                <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
+              </span>
+              <span>Add another card</span>
+            </footer>
+            <!-- footer ends -->
           </div>
         </transition-group>
       </draggable>
@@ -26,7 +40,7 @@
 
 <script>
 import draggable from "vuedraggable";
-import { mapGetters } from "vuex";
+
 export default {
   components: {
     draggable
@@ -58,7 +72,7 @@ export default {
 
 <style lang="scss" scoped>
 .content-wrapper {
-  background: red;
+  background: rgba(80, 75, 75, 0.144) (117, 104, 104);
   width: 100vw;
   // overflow-x: scroll;
 }
@@ -67,11 +81,6 @@ export default {
   width: 700px;
   width: 100%;
   white-space: nowrap;
-
-  #listITem {
-    display: inline-block;
-    width: 400px;
-  }
 }
 // dargdrop
 .flip-list-move {
@@ -89,8 +98,37 @@ export default {
 }
 .list-group-item {
   cursor: move;
-}
-.list-group-item i {
-  cursor: pointer;
+  width: 272px;
+  background: #ebecf0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+  header {
+    cursor: pointer;
+    span {
+      img {
+        height: 15px;
+      }
+    }
+  }
+  .add-card {
+    cursor: pointer;
+    span {
+      color: grey;
+
+      img {
+        height: 18px;
+      }
+    }
+    &:hover {
+      background: #9e9fa344;
+      border-radius: 5px;
+      span {
+        color: #333;
+      }
+    }
+  }
 }
 </style>
