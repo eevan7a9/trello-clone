@@ -10,11 +10,7 @@
         @end="isDragging = false"
       >
         <transition-group type="transition" name="flip-list" class="d-flex">
-          <div
-            class="list-group-item p-2 mx-2 d-flex flex-column"
-            v-for="list of lists"
-            :key="list.id"
-          >
+          <div class="list-group-item m-0 p-0" v-for="list of lists" :key="list.id">
             <BoardList :list="list"></BoardList>
           </div>
         </transition-group>
@@ -43,7 +39,7 @@ export default {
     dragOptions() {
       return {
         animation: 0,
-        group: "description",
+        group: "lists",
         disabled: false,
         ghostClass: "ghost"
       };
@@ -85,11 +81,7 @@ export default {
 .list-group-item {
   cursor: move;
   width: 272px;
-  background: #ebecf0;
-  border-radius: 3px;
-  box-sizing: border-box;
-  max-height: 100%;
-  position: relative;
-  white-space: normal;
+  background: transparent;
+  border: none;
 }
 </style>

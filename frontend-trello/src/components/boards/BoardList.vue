@@ -1,16 +1,31 @@
 <template>
-  <div>
+  <div class="px-2 py-1 m-1">
     <!-- hedear starts -->
     <header class="d-flex justify-content-between align-items-center">
-      <h6 class="m-0 font-weight-bold py-2">{{list.title}}</h6>
+      <h6 class="m-0 px-3 font-weight-bold">{{list.title}}</h6>
       <span>
         <img src="@/assets/icons/more-horizontal-dark.svg" alt="star" class="mr-2" />
       </span>
     </header>
     <!-- header ends -->
-    {{list.cards}}
+    <div class="py-3">
+      <draggable
+        class="list-group"
+        tag="div"
+        v-model="cards"
+        v-bind="dragOptions"
+        @start="isDragging = true"
+        @end="isDragging = false"
+      >
+        <transition-group type="transition" name="flip-list" class="d-flex flex-column">
+          <div class="list-group-item bg-light p-2 mx-2" v-for="card of cards" :key="card.id">
+            <h5>{{card.title}}</h5>
+          </div>
+        </transition-group>
+      </draggable>
+    </div>
     <!-- footer starts -->
-    <footer class="add-card px-1 py-2">
+    <footer class="add-card px-1 py-1">
       <span>
         <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
       </span>
@@ -20,9 +35,32 @@
   </div>
 </template>
 <script>
+import draggable from "vuedraggable";
 export default {
+  components: {
+    draggable
+  },
   props: {
     list: Object
+  },
+  computed: {
+    cards: {
+      get() {
+        return this.list.cards;
+      },
+      set(value) {
+        // this.$store.commit("updateBoardLists", value);
+        console.log(value);
+      }
+    },
+    dragOptions() {
+      return {
+        animation: 0,
+        group: "cards",
+        disabled: false,
+        ghostClass: "ghost"
+      };
+    }
   }
 };
 </script>
@@ -30,7 +68,16 @@ export default {
 
 <style lang="scss" scoped>
 div {
+  background-color: #ebecf0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
   header {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    height: 28px;
     cursor: pointer;
     span {
       img {
