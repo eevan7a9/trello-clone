@@ -48,7 +48,7 @@ export default {
   computed: {
     lists: {
       get() {
-        return this.$store.state.Boards.board.lists;
+        return this.$store.state.Boards.currentBoard.lists;
       },
       set(value) {
         this.$store.commit("updateBoardLists", value);

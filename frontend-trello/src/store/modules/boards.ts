@@ -3,7 +3,7 @@ import dummyData from "@/assets/dummy-data.json";
 
 @Module
 export default class Boards extends VuexModule {
-  board: {
+  currentBoard: {
     id: number;
     title: string;
     lists: Array<object>;
@@ -17,8 +17,8 @@ export default class Boards extends VuexModule {
     members: []
   };
 
-  get currentBoard(): object {
-    return this.board;
+  get getCurrentBoard(): object {
+    return this.currentBoard;
   }
 
   @Mutation
@@ -29,11 +29,11 @@ export default class Boards extends VuexModule {
     adminId: number;
     members: Array<object>;
   }) {
-    this.board = boardData;
+    this.currentBoard = boardData;
   }
   @Mutation
   public updateBoardLists(lists: Array<object>) {
-    this.board.lists = lists;
+    this.currentBoard.lists = lists;
   }
 
   @Action
