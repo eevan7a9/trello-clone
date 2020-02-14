@@ -44,7 +44,13 @@ export default class Boards extends VuexModule {
     if (foundBoard) {
       dummyData.lists.forEach(list => {
         if (list.boardId == foundBoard.id) {
-          foundBoard.lists.push(list);
+          const boardList = JSON.parse(JSON.stringify(list));
+          dummyData.cards.forEach(card => {
+            if (card.listId == boardList.id) {
+              boardList.cards.push(card);
+            }
+          });
+          foundBoard.lists.push(boardList);
         }
       });
       this.context.commit("setBoardData", foundBoard);

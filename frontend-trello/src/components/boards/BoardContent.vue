@@ -23,6 +23,7 @@
               </span>
             </header>
             <!-- header ends -->
+            {{list.cards}}
             <!-- footer starts -->
             <footer class="add-card px-1 py-2">
               <span>
