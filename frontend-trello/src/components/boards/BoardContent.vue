@@ -21,7 +21,7 @@
           <h6 class="p-0 m-0 text-light">Add another list</h6>
         </div>
       </div>
-      <div class="extra-spacer p-2"></div>
+      <div class="ml-2 p-2" :class="{'extra-spacer' : sidebarStatus}"></div>
     </div>
   </div>
 </template>
@@ -29,12 +29,14 @@
 <script>
 import draggable from "vuedraggable";
 import BoardList from "@/components/boards/BoardList";
+import { mapGetters } from "vuex";
 export default {
   components: {
     draggable,
     BoardList
   },
   computed: {
+    ...mapGetters(["sidebarStatus"]),
     lists: {
       get() {
         return this.$store.state.Boards.currentBoard.lists;
@@ -108,5 +110,10 @@ export default {
     padding: 20px;
     height: 32px;
   }
+}
+.extra-spacer {
+  min-width: 339px;
+  background: red;
+  display: block;
 }
 </style>
