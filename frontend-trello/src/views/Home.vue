@@ -2,7 +2,7 @@
   <div class="home d-flex flex-column">
     <BoardHeader />
     <div class="main-board" v-dragscroll:nochilddrag>
-      <BoardContent class="mt-5" />
+      <BoardContent class />
     </div>
     <BoardMenubar class="sidebar-board" />
   </div>

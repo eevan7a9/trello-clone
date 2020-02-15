@@ -18,7 +18,7 @@
         @end="isDragging = false"
       >
         <transition-group type="transition" name="flip-list" class="d-flex flex-column">
-          <div class="list-group-item bg-light p-0 mb-2 mx-2" v-for="card of cards" :key="card.id">
+          <div class="list-group-item p-0 mx-2" v-for="card of cards" :key="card.id">
             <BoardCard :card="card"></BoardCard>
           </div>
         </transition-group>
@@ -36,11 +36,11 @@
       </div>
     </div>
     <!-- footer starts -->
-    <footer class="add-card px-1 py-1 mx-2">
+    <footer class="add-card px-1 py-1 mx-2" @click="showCardForm">
       <span>
         <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
       </span>
-      <span @click="showCardForm">Add another card</span>
+      <span>Add another card</span>
     </footer>
     <!-- footer ends -->
   </div>
@@ -134,6 +134,7 @@ div {
       overflow: hidden;
       overflow-wrap: break-word;
       border-radius: 5px;
+      border-bottom: 1px solid #c6bcbc;
     }
   }
   .add-card {
@@ -169,5 +170,8 @@ div {
 }
 .list-group-item {
   cursor: pointer;
+  border: none;
+  border-bottom: 1px solid #c6bcbc;
+  margin-bottom: 6px;
 }
 </style>
