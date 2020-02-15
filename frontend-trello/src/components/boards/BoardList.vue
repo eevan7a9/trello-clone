@@ -29,8 +29,10 @@
           ref="textarea"
           cols="1"
           rows="1"
+          v-model.trim="cardTitle"
           @input="autoGrow"
           @blur="hideCardFrom"
+          @keypress.enter="hideCardFrom"
           placeholder="Enter a title for this card..."
         ></textarea>
       </div>
@@ -48,6 +50,7 @@
 <script>
 import draggable from "vuedraggable";
 import BoardCard from "@/components/boards/BoardCard";
+
 export default {
   components: {
     draggable,
@@ -58,7 +61,8 @@ export default {
   },
   data() {
     return {
-      isAddOpen: false
+      isAddOpen: false,
+      cardTitle: ""
     };
   },
   computed: {
@@ -96,6 +100,13 @@ export default {
       });
     },
     hideCardFrom() {
+      if (this.cardTitle.length) {
+        this.$store.dispatch("addBoardCard", {
+          listId: this.list.id,
+          cardTitle: this.cardTitle
+        });
+        this.cardTitle = "";
+      }
       this.isAddOpen = false;
     }
   }
