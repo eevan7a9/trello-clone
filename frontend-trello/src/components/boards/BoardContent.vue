@@ -15,12 +15,7 @@
           </div>
         </transition-group>
       </draggable>
-      <div class="add-list m-1" @click="showListForm">
-        <div class="open-add-list d-flex align-items-center">
-          <img src="@/assets/icons/plus.svg" alt="plus" />
-          <h6 class="p-0 m-0 text-light">Add another list</h6>
-        </div>
-      </div>
+      <BoardAddList :boardId="$store.state.Boards.currentBoard.id"></BoardAddList>
       <div class="ml-2 p-2" :class="{'extra-spacer' : sidebarStatus}"></div>
     </div>
   </div>
@@ -29,11 +24,13 @@
 <script>
 import draggable from "vuedraggable";
 import BoardList from "@/components/boards/BoardList";
+import BoardAddList from "@/components/boards/buttons/BoardAddList";
 import { mapGetters } from "vuex";
 export default {
   components: {
     draggable,
-    BoardList
+    BoardList,
+    BoardAddList
   },
   computed: {
     ...mapGetters(["sidebarStatus"]),
@@ -52,11 +49,6 @@ export default {
         disabled: false,
         ghostClass: "ghost"
       };
-    }
-  },
-  methods: {
-    showListForm() {
-      console.log("show the form");
     }
   },
   created() {
@@ -97,20 +89,7 @@ export default {
   background: transparent;
   border: none;
 }
-.add-list {
-  cursor: pointer;
-  min-width: 280px;
-  background-color: rgba(0, 0, 0, 0.219);
-  border-radius: 3px;
-  height: 42px;
-  &:hover {
-    background: rgba(0, 0, 0, 0.411);
-  }
-  .open-add-list {
-    padding: 20px;
-    height: 32px;
-  }
-}
+
 .extra-spacer {
   min-width: 339px;
   background: red;
