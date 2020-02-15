@@ -35,7 +35,6 @@ export default {
     overflow-y: hidden;
     overflow-x: auto;
     height: 100%;
-    background: red;
   }
 }
 .grab-bing {
