@@ -1,5 +1,5 @@
 <template>
-  <div class="py-1 pt-2 m-1">
+  <div class="list-wrapper py-1 pt-2 m-1 handle">
     <!-- hedear starts -->
     <header class="d-flex justify-content-between align-items-center">
       <h6 class="m-0 px-3 font-weight-bold">{{list.title}}</h6>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <!-- footer starts -->
-    <footer class="add-card px-1 py-1 mx-2" @click="showCardForm">
+    <footer class="add-card px-1 py-1" @click="showCardForm">
       <span>
         <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
       </span>
@@ -115,17 +115,20 @@ export default {
 
 
 <style lang="scss" scoped>
-div {
+.list-wrapper {
   background-color: #ebecf0;
-  border-radius: 3px;
+  height: 100%;
   box-sizing: border-box;
   max-height: 100%;
   position: relative;
   white-space: normal;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   header {
     overflow: hidden;
     overflow-wrap: break-word;
     height: 28px;
+    background: #ebecf0;
     cursor: pointer;
     span {
       img {
@@ -136,6 +139,7 @@ div {
   .cards-wrapper {
     overflow: hidden;
     padding: 2px 4px;
+    background: #ebecf0;
     position: relative;
     .add-card-form textarea {
       font-size: 14px;
@@ -149,6 +153,8 @@ div {
     }
   }
   .add-card {
+    background: #ebecf0;
+    width: 100%;
     cursor: pointer;
     span {
       color: grey;
@@ -158,8 +164,7 @@ div {
       }
     }
     &:hover {
-      background: #9e9fa344;
-      border-radius: 5px;
+      background: #b3b3b8;
       span {
         color: #333;
       }

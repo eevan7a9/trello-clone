@@ -1,5 +1,5 @@
 <template>
-  <div class="content-wrapper text-left">
+  <div class="content-wrapper text-left" v-dragscroll>
     <div class="lists-container d-flex px-2 pr-5">
       <draggable
         class="list-group"
@@ -8,15 +8,16 @@
         v-bind="dragOptions"
         @start="isDragging = true"
         @end="isDragging = false"
+        handle=".handle"
       >
-        <transition-group type="transition" name="flip-list" class="d-flex">
+        <transition-group type="transition" name="flip-list" class="d-flex bg-success transition">
           <div class="list-group-item m-0 p-0" v-for="list of lists" :key="list.id">
             <BoardList :list="list"></BoardList>
           </div>
         </transition-group>
       </draggable>
       <BoardAddList :boardId="$store.state.Boards.currentBoard.id"></BoardAddList>
-      <div class="ml-2 p-2" :class="{'extra-spacer' : sidebarStatus}"></div>
+      <div class="ml-2 p-2" :class="{ 'extra-spacer': sidebarStatus }"></div>
     </div>
   </div>
 </template>
@@ -25,12 +26,16 @@
 import draggable from "vuedraggable";
 import BoardList from "@/components/boards/BoardList";
 import BoardAddList from "@/components/boards/buttons/BoardAddList";
+import { dragscroll } from "vue-dragscroll";
 import { mapGetters } from "vuex";
 export default {
   components: {
     draggable,
     BoardList,
     BoardAddList
+  },
+  directives: {
+    dragscroll
   },
   computed: {
     ...mapGetters(["sidebarStatus"]),
@@ -81,10 +86,13 @@ export default {
   background: #c8ebfb;
 }
 .list-group {
-  min-height: 20px;
+  // min-height: 20px;
+  height: 0px;
+  .transition {
+    height: 0px;
+  }
 }
 .list-group-item {
-  cursor: move;
   width: 272px;
   background: transparent;
   border: none;

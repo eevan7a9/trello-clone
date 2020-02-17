@@ -2,7 +2,7 @@
   <div class="home d-flex flex-column">
     <BoardHeader />
     <div class="main-board" v-dragscroll:nochilddrag>
-      <BoardContent class />
+      <BoardContent v-dragscroll="{ target: '.list-group' }" />
     </div>
     <BoardMenubar class="sidebar-board" />
   </div>
