@@ -8,7 +8,7 @@
       </span>
     </header>
     <!-- header ends -->
-    <div class="cards-wrapper py-2">
+    <div class="cards-wrapper pt-2">
       <draggable
         class="list-group"
         tag="div"
@@ -23,38 +23,27 @@
           </div>
         </transition-group>
       </draggable>
-      <div class="add-card-form px-2" v-show="isAddOpen">
-        <textarea
-          class="px-2 pt-2 pb-5"
-          ref="textarea"
-          cols="1"
-          rows="1"
-          v-model.trim="cardTitle"
-          @input="autoGrow"
-          @blur="hideCardFrom"
-          @keypress.enter="hideCardFrom"
-          placeholder="Enter a title for this card..."
-        ></textarea>
-      </div>
     </div>
     <!-- footer starts -->
-    <footer class="add-card px-1 py-1" @click="showCardForm">
+    <!-- <footer class="add-card px-1 py-1" @click="showCardForm">
       <span>
         <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
       </span>
       <span>Add another card</span>
-    </footer>
+    </footer>-->
+    <BoardAddCard :listId="list.id"></BoardAddCard>
     <!-- footer ends -->
   </div>
 </template>
 <script>
 import draggable from "vuedraggable";
 import BoardCard from "@/components/boards/BoardCard";
-
+import BoardAddCard from "@/components/boards/buttons/BoardAddCard";
 export default {
   components: {
     draggable,
-    BoardCard
+    BoardCard,
+    BoardAddCard
   },
   props: {
     list: Object
@@ -92,22 +81,6 @@ export default {
       element.style.height = "5px";
       // element.style.paddingBottom = "40px";
       element.style.height = element.scrollHeight + "px";
-    },
-    showCardForm() {
-      this.isAddOpen = true;
-      this.$nextTick(() => {
-        this.$refs.textarea.focus();
-      });
-    },
-    hideCardFrom() {
-      if (this.cardTitle.length) {
-        this.$store.dispatch("addBoardCard", {
-          listId: this.list.id,
-          cardTitle: this.cardTitle
-        });
-        this.cardTitle = "";
-      }
-      this.isAddOpen = false;
     }
   }
 };
@@ -117,13 +90,16 @@ export default {
 <style lang="scss" scoped>
 .list-wrapper {
   background-color: #ebecf0;
-  height: 100%;
+  // height: 100%;
+  width: 272px;
   box-sizing: border-box;
   max-height: 100%;
   position: relative;
   white-space: normal;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   header {
     overflow: hidden;
     overflow-wrap: break-word;
@@ -141,34 +117,6 @@ export default {
     padding: 2px 4px;
     background: #ebecf0;
     position: relative;
-    .add-card-form textarea {
-      font-size: 14px;
-      width: 240px;
-      resize: none;
-      border: none;
-      overflow: hidden;
-      overflow-wrap: break-word;
-      border-radius: 5px;
-      border-bottom: 1px solid #c6bcbc;
-    }
-  }
-  .add-card {
-    background: #ebecf0;
-    width: 100%;
-    cursor: pointer;
-    span {
-      color: grey;
-
-      img {
-        height: 18px;
-      }
-    }
-    &:hover {
-      background: #b3b3b8;
-      span {
-        color: #333;
-      }
-    }
   }
 }
 .flip-list-move {
@@ -182,7 +130,7 @@ export default {
   background: #c8ebfb;
 }
 .list-group {
-  min-height: 20px;
+  min-height: 0px;
 }
 .list-group-item {
   cursor: pointer;

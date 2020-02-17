@@ -10,8 +10,8 @@
         @end="isDragging = false"
         handle=".handle"
       >
-        <transition-group type="transition" name="flip-list" class="d-flex bg-success transition">
-          <div class="list-group-item m-0 p-0" v-for="list of lists" :key="list.id">
+        <transition-group type="transition" name="flip-list" class="d-flex transition">
+          <div class="list-group-item m-1 p-0" v-for="list of lists" :key="list.id">
             <BoardList :list="list"></BoardList>
           </div>
         </transition-group>
@@ -87,9 +87,9 @@ export default {
 }
 .list-group {
   // min-height: 20px;
-  height: 0px;
+  height: 130px;
   .transition {
-    height: 0px;
+    height: 130px;
   }
 }
 .list-group-item {
