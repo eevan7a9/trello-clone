@@ -68,6 +68,10 @@ export default class Boards extends VuexModule {
       foundList.cards.push(card);
     }
   }
+  @Mutation
+  public insertBoardList(list: BoardList) {
+    this.currentBoard.lists.push(list);
+  }
 
   @Action
   public async getBoardData(id: number) {
@@ -101,5 +105,15 @@ export default class Boards extends VuexModule {
       label: ""
     };
     this.context.commit("insertBoardCard", card);
+  }
+  @Action
+  public addBoardList(listTitle: string) {
+    const newList = {
+      id: Date.parse(new Date().toString()) / 1000,
+      boardId: this.currentBoard.id,
+      title: listTitle,
+      cards: []
+    };
+    this.context.commit("insertBoardList", newList);
   }
 }

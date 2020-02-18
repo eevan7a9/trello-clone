@@ -44,7 +44,7 @@ export default class BoardAddList extends Vue {
   }
   submitForm() {
     if (this.listTitle.length) {
-      console.log("submited");
+      this.$store.dispatch("addBoardList", this.listTitle);
       this.listTitle = "";
     }
     this.isFormOpen = false;
