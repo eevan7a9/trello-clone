@@ -16,18 +16,18 @@
           <u>{{listTitle}}</u>
         </small>
       </template>
-      <BoardCardModalContent></BoardCardModalContent>
+      <ModalContent></ModalContent>
     </b-modal>
   </div>
 </template>
 
 <script lang="ts">
-import BoardCardModalContent from "@/components/boards/BoardCardModalContent.vue";
+import ModalContent from "@/components/boards/cardModal/ModalContent.vue";
 import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component({
   components: {
-    BoardCardModalContent
+    ModalContent
   }
 })
 export default class BoardCard extends Vue {
