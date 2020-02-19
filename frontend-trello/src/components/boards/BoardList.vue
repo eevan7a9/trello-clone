@@ -19,20 +19,12 @@
       >
         <transition-group type="transition" name="flip-list" class="d-flex flex-column">
           <div class="list-group-item p-0 mx-2" v-for="card of cards" :key="card.id">
-            <BoardCard :card="card"></BoardCard>
+            <BoardCard :card="card" :listTitle="list.title"></BoardCard>
           </div>
         </transition-group>
       </draggable>
     </div>
-    <!-- footer starts -->
-    <!-- <footer class="add-card px-1 py-1" @click="showCardForm">
-      <span>
-        <img src="@/assets/icons/plus-dark.svg" alt="star" class="mr-2" />
-      </span>
-      <span>Add another card</span>
-    </footer>-->
     <BoardAddCard :listId="list.id"></BoardAddCard>
-    <!-- footer ends -->
   </div>
 </template>
 <script>
@@ -81,6 +73,12 @@ export default {
       element.style.height = "5px";
       // element.style.paddingBottom = "40px";
       element.style.height = element.scrollHeight + "px";
+    },
+    showModal() {
+      this.$refs["my-modal"].show();
+    },
+    hideModal() {
+      this.$refs["my-modal"].hide();
     }
   }
 };
