@@ -19,7 +19,15 @@
     </div>
     <!-- Modal -->
 
-    <b-modal :id="`card-${card.id}`" size="lg" scrollable hide-footer header-border-variant="light">
+    <b-modal
+      :id="`card-${card.id}`"
+      size="lg"
+      header-bg-variant="light"
+      body-bg-variant="light"
+      scrollable
+      hide-footer
+      header-border-variant="light"
+    >
       <template v-slot:modal-title>
         <div>
           <div class="d-flex">
