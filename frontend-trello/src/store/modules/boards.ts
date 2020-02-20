@@ -21,6 +21,8 @@ interface BoardCard {
   desc: string;
   members: Array<object>;
   label: string;
+  watch: boolean;
+  comments: Array<object>;
 }
 
 @Module
@@ -102,7 +104,9 @@ export default class Boards extends VuexModule {
       title: payload.cardTitle,
       desc: "",
       members: [],
-      label: ""
+      label: "",
+      watch: true,
+      comments: []
     };
     this.context.commit("insertBoardCard", card);
   }

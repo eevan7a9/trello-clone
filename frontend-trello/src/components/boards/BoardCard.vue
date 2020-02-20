@@ -2,10 +2,20 @@
   <div class="card m-0 p-0">
     <div class="card-title m-0 p-2" @click="$bvModal.show(`card-${card.id}`)">
       <span>{{card.title}}</span>
-      <div class="card-misc">
-        <img src="@/assets/icons/card-watch.svg" class="mr-1" alt="watched" v-if="card.watch" />
-        <img src="@/assets/icons/card-desc-thin.svg" class="mr-1" alt="watched" v-if="card.desc" />
-      </div>
+      <footer class>
+        <div class="card-misc float-left">
+          <img src="@/assets/icons/card-watch.svg" class="mr-1" alt="watched" v-if="card.watch" />
+          <img src="@/assets/icons/card-desc-thin.svg" class="mr-1" alt="watched" v-if="card.desc" />
+        </div>
+        <div class="card-owners float-right d-flex">
+          <button
+            v-for="(member, index) in card.members"
+            :key="index"
+            class="board-header-btn font-weight-bold p-1 d-flex justify-content-center align-items-center mr-1"
+            :style="`background:${member.bg}; color: ${member.color}`"
+          >{{ member.name[0] }}</button>
+        </div>
+      </footer>
     </div>
     <!-- Modal -->
 
@@ -51,6 +61,16 @@ export default class BoardCard extends Vue {
     .card-misc {
       img {
         height: 15px;
+      }
+    }
+    .card-owners {
+      .board-header-btn {
+        background: hsla(0, 0%, 100%, 0.3);
+        border-radius: 100%;
+        border: 0px solid;
+        font-size: 14px;
+        height: 29px;
+        width: 29px;
       }
     }
   }

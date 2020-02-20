@@ -13,7 +13,7 @@
       </div>
       <!-- card desc end -->
       <!-- card activity start -->
-      <div class="d-flex">
+      <div class="d-flex mt-3">
         <img src="@/assets/icons/card-list.svg" class="mr-2" />
         <h5 class="m-0">Activity</h5>
       </div>
@@ -21,8 +21,6 @@
         <input
           type="text"
           class="form-control"
-          name
-          id
           aria-describedby="helpId"
           placeholder="Write a comment..."
         />
