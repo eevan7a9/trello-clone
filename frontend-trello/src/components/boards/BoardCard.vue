@@ -19,16 +19,18 @@
     </div>
     <!-- Modal -->
 
-    <b-modal :id="`card-${card.id}`" size="lg" scrollable hide-footer>
+    <b-modal :id="`card-${card.id}`" size="lg" scrollable hide-footer header-border-variant="light">
       <template v-slot:modal-title>
-        <div class="d-flex">
-          <img src="@/assets/icons/card-header.svg" class="mr-2" />
-          <h4 class="m-0">{{card.title}}</h4>
+        <div>
+          <div class="d-flex">
+            <img src="@/assets/icons/card-header.svg" class="mr-2" />
+            <h4 class="m-0">{{card.title}}</h4>
+          </div>
+          <small class="text-secondary ml-4 my-0 p-0">
+            In list
+            <u>{{listTitle}}</u>
+          </small>
         </div>
-        <small class="text-secondary ml-4">
-          In list
-          <u>{{listTitle}}</u>
-        </small>
       </template>
       <ModalContent :card="card"></ModalContent>
     </b-modal>

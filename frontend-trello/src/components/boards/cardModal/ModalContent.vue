@@ -1,30 +1,13 @@
 <template>
-  <div class="card-content pl-2 pt-3 pb-4 row">
+  <div class="card-content pl-2 pb-4 row">
     <div class="col-md-8 left-content">
+      <!-- members start -->
+      <CardMembers :card="card"></CardMembers>
       <!-- card desc start -->
-      <div class="d-flex">
-        <img src="@/assets/icons/card-desc.svg" class="mr-2" />
-        <h5 class="m-0">Description</h5>
-      </div>
-      <div class="card-desc p-2 pl-4">
-        <p>
-          <small>{{card.desc}}</small>
-        </p>
-      </div>
+      <CardDesc :desc="card.desc"></CardDesc>
       <!-- card desc end -->
       <!-- card activity start -->
-      <div class="d-flex mt-3">
-        <img src="@/assets/icons/card-list.svg" class="mr-2" />
-        <h5 class="m-0">Activity</h5>
-      </div>
-      <div class="card-activity p-2 pl-4">
-        <input
-          type="text"
-          class="form-control"
-          aria-describedby="helpId"
-          placeholder="Write a comment..."
-        />
-      </div>
+      <CardActivity></CardActivity>
       <!-- card activity ends -->
     </div>
     <div class="col-md-4">
@@ -101,18 +84,14 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import BoardVisibility from "@/components/boards/buttons/BoardVisibility.vue";
-import BoardPartOf from "@/components/boards/buttons/BoardPartOf.vue";
-import BoardStared from "@/components/boards/buttons/BoardStared.vue";
-import BoardInvite from "@/components/boards/buttons/BoardInvite.vue";
-import BoardMenu from "@/components/boards/buttons/BoardMenu.vue";
+import CardMembers from "@/components/boards/cardModal/CardMembers.vue";
+import CardDesc from "@/components/boards/cardModal/CardDesc.vue";
+import CardActivity from "@/components/boards/cardModal/CardActivity.vue";
 @Component({
   components: {
-    BoardVisibility,
-    BoardPartOf,
-    BoardStared,
-    BoardInvite,
-    BoardMenu
+    CardMembers,
+    CardDesc,
+    CardActivity
   }
 })
 export default class BoardCardModalContent extends Vue {
