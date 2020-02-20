@@ -8,7 +8,7 @@
       </div>
       <div class="card-desc p-2 pl-4">
         <p>
-          <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum nesciunt delectus veritatis atque officia adipisci voluptate labore, debitis distinctio doloremque?</small>
+          <small>{{card.desc}}</small>
         </p>
       </div>
       <!-- card desc end -->
@@ -102,7 +102,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import BoardVisibility from "@/components/boards/buttons/BoardVisibility.vue";
 import BoardPartOf from "@/components/boards/buttons/BoardPartOf.vue";
 import BoardStared from "@/components/boards/buttons/BoardStared.vue";
@@ -117,7 +117,9 @@ import BoardMenu from "@/components/boards/buttons/BoardMenu.vue";
     BoardMenu
   }
 })
-export default class BoardCardModalContent extends Vue {}
+export default class BoardCardModalContent extends Vue {
+  @Prop(Object) private card: object | undefined;
+}
 </script>
 
 <style lang="scss" scoped>

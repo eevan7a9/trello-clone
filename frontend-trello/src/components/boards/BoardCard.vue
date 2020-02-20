@@ -2,6 +2,10 @@
   <div class="card m-0 p-0">
     <div class="card-title m-0 p-2" @click="$bvModal.show(`card-${card.id}`)">
       <span>{{card.title}}</span>
+      <div class="card-misc">
+        <img src="@/assets/icons/card-watch.svg" class="mr-1" alt="watched" v-if="card.watch" />
+        <img src="@/assets/icons/card-desc-thin.svg" class="mr-1" alt="watched" v-if="card.desc" />
+      </div>
     </div>
     <!-- Modal -->
 
@@ -16,7 +20,7 @@
           <u>{{listTitle}}</u>
         </small>
       </template>
-      <ModalContent></ModalContent>
+      <ModalContent :card="card"></ModalContent>
     </b-modal>
   </div>
 </template>
@@ -44,6 +48,11 @@ export default class BoardCard extends Vue {
   }
   .card-title {
     font-size: 14px;
+    .card-misc {
+      img {
+        height: 15px;
+      }
+    }
   }
 }
 </style>

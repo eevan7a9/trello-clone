@@ -134,72 +134,114 @@
       "listId": 1,
       "title": "Card 1 test",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
-      "members": [],
-      "label": ""
+      "members": [
+        {
+          "id": 101,
+          "name": "Evan",
+          "color": "blue"
+        }
+      ],
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 2,
       "listId": 1,
       "title": "Card 2 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. https://evan.asia/",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": false,
+      "comments": []
     },
     {
       "id": 3,
       "listId": 1,
       "title": "Card 3 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
-      "members": [],
-      "label": ""
+      "desc": "",
+      "members": [
+        {
+          "id": 101,
+          "name": "Evan",
+          "color": "blue"
+        }
+      ],
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 4,
       "listId": 2,
       "title": "Card 4 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
+      "desc": "My Website https://evan.asia/",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 5,
       "listId": 3,
       "title": "Card 5 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
-      "members": [],
-      "label": ""
+      "desc": "",
+      "members": [
+        {
+          "id": 101,
+          "name": "Evan",
+          "color": "blue"
+        }
+      ],
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 6,
       "listId": 3,
       "title": "Card 6 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
+      "desc": "The source code for this project is here: https://github.com/eevan7a9/trello-clone",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": false,
+      "comments": []
     },
     {
       "id": 7,
       "listId": 4,
       "title": "Card 7 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
-      "members": [],
-      "label": ""
+      "desc": "",
+      "members": [
+        {
+          "id": 101,
+          "name": "Evan",
+          "color": "blue"
+        }
+      ],
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 8,
       "listId": 4,
       "title": "Card 8 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
+      "desc": "The source code for this project is here: https://github.com/eevan7a9/trello-clone",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 9,
       "listId": 4,
       "title": "Card 9 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
+      "desc": "The source code for this project is here: https://github.com/eevan7a9/trello-clone",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 10,
@@ -207,23 +249,41 @@
       "title": "Card 10 test",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 11,
       "listId": 6,
       "title": "Card 11 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
-      "members": [],
-      "label": ""
+      "desc": "",
+      "members": [
+        {
+          "id": 101,
+          "name": "Evan",
+          "color": "blue"
+        }
+      ],
+      "label": "",
+      "watch": false,
+      "comments": []
     },
     {
       "id": 12,
       "listId": 7,
       "title": "Card 12 test",
-      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
-      "members": [],
-      "label": ""
+      "desc": "https://github.com/eevan7a9/trello-clone source code",
+      "members": [
+        {
+          "id": 101,
+          "name": "Evan",
+          "color": "blue"
+        }
+      ],
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 13,
@@ -231,7 +291,9 @@
       "title": "Card 13 test",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": true,
+      "comments": []
     },
     {
       "id": 14,
@@ -239,7 +301,9 @@
       "title": "Card 14 test",
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit ut lacus auctor auctor sed eu leo. Phasellus mattis consectetur ligula nec tempus.",
       "members": [],
-      "label": ""
+      "label": "",
+      "watch": true,
+      "comments": []
     }
   ]
 }
