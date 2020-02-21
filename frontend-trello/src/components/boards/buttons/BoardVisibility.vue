@@ -115,7 +115,7 @@ export default class BoardVisibility extends Vue {
     }
   }
   .board-header-btn {
-    background-color: rgba(0, 0, 0, 0.219);
+    background-color: rgba(255, 255, 255, 0.219);
     border-radius: 5px;
     border: 0px solid;
     &:hover {
