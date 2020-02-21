@@ -11,7 +11,7 @@
       <BoardVisibility></BoardVisibility>|
     </div>
     <div class="float-left text-light d-flex justify-content-center align-items-center mr-3">
-      <BoardInvite></BoardInvite>
+      <BoardInvite :members="board.members"></BoardInvite>
     </div>
     <div class="float-right text-light d-flex justify-content-center align-items-center mr-3">
       <BoardMenu></BoardMenu>
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import BoardVisibility from "@/components/boards/buttons/BoardVisibility.vue";
 import BoardPartOf from "@/components/boards/buttons/BoardPartOf.vue";
 import BoardStared from "@/components/boards/buttons/BoardStared.vue";
@@ -35,7 +35,9 @@ import BoardMenu from "@/components/boards/buttons/BoardMenu.vue";
     BoardMenu
   }
 })
-export default class BoardHeader extends Vue {}
+export default class BoardHeader extends Vue {
+  @Prop(Object) private board: object | undefined;
+}
 </script>
 
 <style lang="scss" scoped>

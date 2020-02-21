@@ -1,6 +1,6 @@
 <template>
   <div class="home d-flex flex-column">
-    <BoardHeader />
+    <BoardHeader :board="getCurrentBoard" />
     <div class="main-board" v-dragscroll:nochilddrag>
       <BoardContent v-dragscroll="{ target: '.list-group' }" />
     </div>
@@ -14,6 +14,7 @@ import { dragscroll } from "vue-dragscroll";
 import BoardContent from "@/components/boards/BoardContent.vue";
 import BoardHeader from "@/components/boards/BoardHeader.vue";
 import BoardMenubar from "@/components/boards/menubar/BoardMenubar.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -23,6 +24,9 @@ export default {
   },
   directives: {
     dragscroll
+  },
+  computed: {
+    ...mapGetters(["getCurrentBoard"])
   }
 };
 </script>

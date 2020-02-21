@@ -3,6 +3,14 @@
     exclude: [],
     handler: 'onClose'
   }">
+    <div class="card-members float-left d-flex mt-1 mr-2">
+      <button
+        v-for="(member, index) in members"
+        :key="index"
+        class="card-header-btn font-weight-bold p-1 d-flex justify-content-center align-items-center"
+        :style="`background:${member.bg}; color: ${member.color}`"
+      >{{ member.name[0] }}</button>
+    </div>
     <button
       @click="toggleDropdown"
       class="board-header-btn text-light p-2 d-flex justify-content-center align-items-center mr-2"
@@ -35,10 +43,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
 export default class BoardInvite extends Vue {
+  @Prop(Array) private members: Array<object> | undefined;
   email = "";
   isShown = false;
 
@@ -57,6 +66,16 @@ export default class BoardInvite extends Vue {
 .dropdown {
   position: relative;
   display: inline-block;
+  .card-members {
+    .card-header-btn {
+      background: hsla(0, 0%, 100%, 0.3);
+      border-radius: 100%;
+      border: 0px solid;
+      font-size: 14px;
+      height: 29px;
+      width: 29px;
+    }
+  }
   .dropdown-content {
     display: none;
     position: absolute;
@@ -82,7 +101,7 @@ export default class BoardInvite extends Vue {
     }
   }
   .board-header-btn {
-    background-color: rgba(0, 0, 0, 0.219);
+    background-color: rgba(255, 255, 255, 0.219);
     border-radius: 5px;
     border: 0px solid;
     &:hover {
