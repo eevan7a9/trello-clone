@@ -5,11 +5,11 @@
       <button
         v-for="(member, index) in card.members"
         :key="index"
-        class="board-header-btn font-weight-bold p-1 d-flex justify-content-center align-items-center mr-1"
+        class="card-header-btn font-weight-bold p-1 d-flex justify-content-center align-items-center mr-1"
         :style="`background:${member.bg}; color: ${member.color}`"
       >{{ member.name[0] }}</button>
       <button
-        class="board-header-btn font-weight-bold p-1 d-flex justify-content-center align-items-center"
+        class="card-header-btn font-weight-bold p-1 d-flex justify-content-center align-items-center"
         :style="`background:#f4f5f7; color: white`"
       >
         <img src="@/assets/icons/plus-dark.svg" alt />
@@ -29,7 +29,7 @@ export default class CardMembers extends Vue {
 
 <style  lang="scss" scoped>
 .card-members {
-  .board-header-btn {
+  .card-header-btn {
     background: hsla(0, 0%, 100%, 0.3);
     border-radius: 100%;
     border: 0px solid;
