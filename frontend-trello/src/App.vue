@@ -22,7 +22,7 @@ export default class ComponentName extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: url(https://cdn.pixabay.com/photo/2020/02/02/19/55/channel-4814014_960_720.jpg);
+  background: url(https://cdn.pixabay.com/photo/2020/02/07/14/15/landscape-4827278_960_720.jpg);
   background-position: 50%;
   position: relative;
   background-size: cover;

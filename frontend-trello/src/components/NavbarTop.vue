@@ -5,7 +5,7 @@
         <img src="@/assets/icons/home.svg" alt="home" />
       </router-link>
 
-      <li class="m-1">
+      <li class="ml-1 mt-1">
         <BoardList></BoardList>
       </li>
     </ul>
