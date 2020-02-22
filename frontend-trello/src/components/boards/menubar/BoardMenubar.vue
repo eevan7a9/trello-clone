@@ -25,6 +25,14 @@
           <span class="text-capitalize font-weight-bold text-dark">{{list.title}}</span>
         </div>
         <hr />
+        <div class="items text-left d-flex">
+          <img src="@/assets/icons/card-zap.svg" class="m-2" />
+          <div class="powerup-label mt-1">
+            <span class="text-capitalize font-weight-bold text-dark">Power-Ups</span>
+            <p class="text-muted m-0 p-0">Calendar, Google Drive and more...</p>
+          </div>
+        </div>
+        <hr />
         <BoardActivity></BoardActivity>
       </div>
       <!-- Menubar item's content Starts -->
@@ -140,6 +148,11 @@ export default class BoardMenubar extends Vue {
         }
         span {
           font-size: 16px;
+        }
+        .powerup-label {
+          p {
+            font-size: 15px;
+          }
         }
       }
     }
