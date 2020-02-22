@@ -4,7 +4,7 @@
     <div class="main-board" v-dragscroll:nochilddrag>
       <BoardContent v-dragscroll="{ target: '.list-group' }" />
     </div>
-    <BoardMenubar class="sidebar-board" />
+    <BoardMenubar :activity="getCurrentBoard.activity" class="sidebar-board" />
   </div>
 </template>
 

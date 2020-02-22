@@ -12,46 +12,88 @@
         <img src="@/assets/icons/x.svg" alt="close" />
       </span>
     </header>
-
+    <!-- Menu items -->
     <div class="menubar-content">
-      <div class="menubar-items p-4" v-show="!showItem">
+      <div class="menubar-items p-4" v-if="!showItem">
         <div
           v-for="(list, index) of lists"
           :key="index"
           class="text-left"
-          @click="selectMenubarItem(list.title)"
+          @click="selectMenubarItem(list)"
         >
           <img :src="require(`@/assets/icons/${list.icon}`)" class="m-2" />
           <span class="text-capitalize font-weight-bold text-dark">{{list.title}}</span>
         </div>
         <hr />
       </div>
+      <!-- Menubar item's content Starts -->
+      <div class="menubar-items-content" v-else>
+        <component :is="menuContentOf"></component>
+      </div>
+      <!-- Menubar item's content Ends -->
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import { mapGetters } from "vuex";
+import MenubarAbout from "@/components/boards/menubar/MenubarAbout.vue";
+import MenubarBackground from "@/components/boards/menubar/MenubarBackground.vue";
+import MenubarSearchCard from "@/components/boards/menubar/MenubarSearchCard.vue";
+import MenubarStickers from "@/components/boards/menubar/MenubarStickers.vue";
 
 @Component({
-  computed: mapGetters(["sidebarStatus"])
+  computed: mapGetters(["sidebarStatus"]),
+  components: {
+    MenubarAbout,
+    MenubarBackground,
+    MenubarSearchCard,
+    MenubarStickers
+  }
 })
 export default class BoardMenubar extends Vue {
+  @Prop(Array) private activity: Array<object> | undefined;
+
   menuHeader = "menu";
+  menuContentOf = "MenubarAbout";
+
   lists = [
-    { icon: "trello-dark.svg", title: "about this board" },
-    { icon: "square-grey.svg", title: "change background" },
-    { icon: "search-grey.svg", title: "search cards" },
-    { icon: "sticker-grey.svg", title: "stickers" }
+    {
+      icon: "trello-dark.svg",
+      title: "about this board",
+      contentOf: "MenubarAbout"
+    },
+    {
+      icon: "square-grey.svg",
+      title: "change background",
+      contentOf: "MenubarBackground"
+    },
+    {
+      icon: "search-grey.svg",
+      title: "search cards",
+      contentOf: "MenubarSearchCard"
+    },
+    {
+      icon: "sticker-grey.svg",
+      title: "stickers",
+      contentOf: "MenubarStickers"
+    }
   ];
   showItem = false; // when clicked menubar item
   toggleMenu() {
     this.$store.dispatch("toggleMenuSidebar");
   }
-  selectMenubarItem(label = "menu") {
-    this.showItem = label === "menu" ? false : true;
-    this.menuHeader = label;
+  selectMenubarItem(
+    list: {
+      icon: string;
+      title: string;
+      contentOf: string;
+    } = { icon: "", title: "menu", contentOf: "" }
+  ) {
+    this.showItem = list.title == "menu" ? false : true;
+    this.menuHeader = list.title;
+    this.menuContentOf = list.title == "menu" ? "" : list.contentOf;
   }
 }
 </script>
@@ -91,7 +133,7 @@ export default class BoardMenubar extends Vue {
           background: rgba(128, 128, 128, 0.301);
         }
         img {
-          height: 20px;
+          height: 25px;
         }
         span {
           font-size: 14px;
