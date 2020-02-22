@@ -25,7 +25,7 @@
           <span class="text-capitalize font-weight-bold text-dark">{{list.title}}</span>
         </div>
         <hr />
-        <div class="items text-left d-flex">
+        <div class="items disabled text-left d-flex">
           <img src="@/assets/icons/card-zap.svg" class="m-2" />
           <div class="powerup-label mt-1">
             <span class="text-capitalize font-weight-bold text-dark">Power-Ups</span>
@@ -142,6 +142,12 @@ export default class BoardMenubar extends Vue {
         cursor: pointer;
         &:hover {
           background: rgba(128, 128, 128, 0.301);
+        }
+        &.disabled {
+          cursor: not-allowed;
+          &:hover {
+            background: none;
+          }
         }
         img {
           height: 25px;

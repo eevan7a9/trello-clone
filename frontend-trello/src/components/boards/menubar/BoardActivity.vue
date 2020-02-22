@@ -39,10 +39,8 @@ export default class BoardActivity extends Vue {}
 <style lang="scss" scoped>
 .header-activity {
   border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background: rgba(128, 128, 128, 0.301);
-  }
+  cursor: not-allowed;
+
   img {
     height: 18px;
   }
