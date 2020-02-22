@@ -2,7 +2,7 @@
   <div class="home d-flex flex-column">
     <BoardHeader :board="getCurrentBoard" />
     <div class="main-board" v-dragscroll:nochilddrag>
-      <BoardContent v-dragscroll="{ target: '.list-group' }" />
+      <BoardContent />
     </div>
     <BoardMenubar :activity="getCurrentBoard.activity" class="sidebar-board" />
   </div>

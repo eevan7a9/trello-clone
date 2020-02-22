@@ -1,5 +1,5 @@
 <template>
-  <div class="content-wrapper text-left" v-dragscroll>
+  <div class="content-wrapper text-left">
     <div class="lists-container d-flex px-2 pr-5">
       <draggable
         class="list-group"
@@ -26,16 +26,12 @@
 import draggable from "vuedraggable";
 import BoardList from "@/components/boards/BoardList";
 import BoardAddList from "@/components/boards/buttons/BoardAddList";
-import { dragscroll } from "vue-dragscroll";
 import { mapGetters } from "vuex";
 export default {
   components: {
     draggable,
     BoardList,
     BoardAddList
-  },
-  directives: {
-    dragscroll
   },
   computed: {
     ...mapGetters(["sidebarStatus"]),
