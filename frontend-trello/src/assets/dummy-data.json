@@ -62,7 +62,7 @@
             "bg": "grey",
             "color": "aliceblue"
           },
-          "content": "Joined List 8"
+          "content": "Joined Card 13 test"
         },
         {
           "user": {
@@ -71,7 +71,7 @@
             "bg": "rgb(0, 123, 255)",
             "color": "aliceblue"
           },
-          "content": "Joined to List 8"
+          "content": "Joined to Card 12 test"
         },
         {
           "user": {
@@ -90,6 +90,24 @@
             "color": "aliceblue"
           },
           "content": "Added 'Card 11 test to List 6"
+        },
+        {
+          "user": {
+            "id": 333,
+            "name": "Nami",
+            "bg": "#ee8585 none repeat scroll 0% 0%",
+            "color": "aliceblue"
+          },
+          "content": "Added 'Card 10 test to List 5"
+        },
+        {
+          "user": {
+            "id": 101,
+            "name": "Evan",
+            "bg": "rgb(0, 123, 255)",
+            "color": "aliceblue"
+          },
+          "content": "Added 'Card 8 test to List 4"
         }
       ]
     },

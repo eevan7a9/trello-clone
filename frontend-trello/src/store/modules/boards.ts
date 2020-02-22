@@ -7,6 +7,7 @@ interface Board {
   lists: BoardList[];
   adminId: number;
   members: Array<object>;
+  activity: Array<object>;
 }
 interface BoardList {
   id: number;
@@ -32,21 +33,19 @@ export default class Boards extends VuexModule {
     title: "dddd",
     lists: [],
     adminId: 0,
-    members: []
+    members: [],
+    activity: []
   };
 
   get getCurrentBoard(): object {
     return this.currentBoard;
   }
+  get getBoardActivity(): Array<object> {
+    return this.currentBoard.activity;
+  }
 
   @Mutation
-  public setBoardData(boardData: {
-    id: number;
-    title: string;
-    lists: BoardList[];
-    adminId: number;
-    members: Array<object>;
-  }) {
+  public setBoardData(boardData: Board) {
     this.currentBoard = boardData;
   }
   @Mutation

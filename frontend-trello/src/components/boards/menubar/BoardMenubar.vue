@@ -18,13 +18,14 @@
         <div
           v-for="(list, index) of lists"
           :key="index"
-          class="text-left"
+          class="items text-left"
           @click="selectMenubarItem(list)"
         >
           <img :src="require(`@/assets/icons/${list.icon}`)" class="m-2" />
           <span class="text-capitalize font-weight-bold text-dark">{{list.title}}</span>
         </div>
         <hr />
+        <BoardActivity></BoardActivity>
       </div>
       <!-- Menubar item's content Starts -->
       <div class="menubar-items-content" v-else>
@@ -42,10 +43,12 @@ import MenubarAbout from "@/components/boards/menubar/MenubarAbout.vue";
 import MenubarBackground from "@/components/boards/menubar/MenubarBackground.vue";
 import MenubarSearchCard from "@/components/boards/menubar/MenubarSearchCard.vue";
 import MenubarStickers from "@/components/boards/menubar/MenubarStickers.vue";
+import BoardActivity from "@/components/boards/menubar/BoardActivity.vue";
 
 @Component({
   computed: mapGetters(["sidebarStatus"]),
   components: {
+    BoardActivity,
     MenubarAbout,
     MenubarBackground,
     MenubarSearchCard,
@@ -126,7 +129,7 @@ export default class BoardMenubar extends Vue {
   .menubar-content {
     opacity: 0;
     .menubar-items {
-      div {
+      .items {
         border-radius: 5px;
         cursor: pointer;
         &:hover {
@@ -136,7 +139,7 @@ export default class BoardMenubar extends Vue {
           height: 25px;
         }
         span {
-          font-size: 14px;
+          font-size: 16px;
         }
       }
     }
