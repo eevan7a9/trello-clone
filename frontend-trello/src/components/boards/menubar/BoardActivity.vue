@@ -60,6 +60,9 @@ export default class BoardActivity extends Vue {}
   }
   .info-container {
     color: #172b4d;
+    h6 {
+      font-size: 15px;
+    }
   }
 }
 </style>
