@@ -1,6 +1,6 @@
 <template>
   <div class="side-menubar-wrapper bg-light mt-1" :class="{'active' : sidebarStatus}">
-    <header class="py-2 px-1 m-0 row border border-bottom">
+    <header class="py-2 px-1 m-0 row border border-bottom bg-light">
       <span class="icon col-2" @click="selectMenubarItem()" v-if="showItem">
         <img src="@/assets/icons/chevron-left.svg" alt="back" />
       </span>
@@ -127,6 +127,9 @@ export default class BoardMenubar extends Vue {
     }
   }
   header {
+    top: 0;
+    position: sticky;
+    z-index: 2;
     span {
       font-size: 18px;
       &.icon {
