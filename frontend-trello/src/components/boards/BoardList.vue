@@ -2,7 +2,19 @@
   <div class="list-wrapper py-1 pt-2 m-1 handle">
     <!-- hedear starts -->
     <header class="d-flex justify-content-between align-items-center">
-      <h6 class="m-0 px-3 font-weight-bold">{{list.title}}</h6>
+      <h6
+        class="m-0 px-3 py-2 font-weight-bold"
+        @click="enableListEdit"
+        v-if="!listEdit"
+      >{{list.title}}</h6>
+      <input
+        class="ml-1"
+        ref="editList"
+        @blur="hideListEdit"
+        :value="list.title"
+        type="text"
+        v-else
+      />
       <span>
         <img src="@/assets/icons/more-horizontal-dark.svg" alt="star" class="mr-2" />
       </span>
@@ -42,8 +54,7 @@ export default {
   },
   data() {
     return {
-      isAddOpen: false,
-      cardTitle: ""
+      listEdit: false
     };
   },
   computed: {
@@ -68,17 +79,18 @@ export default {
     }
   },
   methods: {
-    autoGrow() {
-      const element = this.$refs.textarea;
-      element.style.height = "5px";
-      // element.style.paddingBottom = "40px";
-      element.style.height = element.scrollHeight + "px";
+    enableListEdit() {
+      console.log("edit");
+      this.listEdit = true;
+      this.$nextTick(() => {
+        this.$refs.editList.focus();
+      });
     },
-    showModal() {
-      this.$refs["my-modal"].show();
-    },
-    hideModal() {
-      this.$refs["my-modal"].hide();
+    hideListEdit() {
+      if (this.$refs.editList.value.length) {
+        this.list.title = this.$refs.editList.value;
+      }
+      this.listEdit = false;
     }
   }
 };
@@ -101,7 +113,7 @@ export default {
   header {
     overflow: hidden;
     overflow-wrap: break-word;
-    height: 28px;
+
     background: #ebecf0;
     cursor: pointer;
     span {
