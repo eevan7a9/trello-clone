@@ -4,7 +4,7 @@
       <!-- members start -->
       <CardMembers :card="card"></CardMembers>
       <!-- card desc start -->
-      <CardDesc :desc="card.desc"></CardDesc>
+      <CardDesc :card="card"></CardDesc>
       <!-- card desc end -->
       <!-- card activity start -->
       <CardActivity></CardActivity>

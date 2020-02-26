@@ -3,21 +3,28 @@
     <div class="d-flex align-items-center">
       <img src="@/assets/icons/card-desc.svg" class="mr-2" />
       <h5 class="m-0">Description</h5>
-      <button class="edit ml-3 px-4 py-2" v-if="desc && !showInput" @click="showInput=true">Edit</button>
+      <button class="edit ml-3 px-4 py-2" v-if="card.desc && !isShowEdit" @click="enableEdit">Edit</button>
     </div>
-    <div class="card-desc p-2 pl-4" v-if="desc && !showInput">
-      <p>{{desc}}</p>
+    <div class="card-desc p-2 pl-4" @click="enableEdit" v-if="card.desc && !isShowEdit">
+      <p>{{card.desc}}</p>
     </div>
-    <div class="card-desc-empty" v-if="!desc && !showInput">
-      <div class="desc-btn ml-4 mt-3" @click="showInput=true">
+    <div class="card-desc-empty" v-if="!card.desc && !isShowEdit">
+      <div class="desc-btn ml-4 mt-3" @click="enableEdit">
         <a>Add more detailed information</a>
       </div>
     </div>
-    <div class="card-desc-input ml-4 mt-3" v-if="showInput">
-      <textarea cols="30" rows="4" placeholder="Add more detailed information..."></textarea>
+    <div class="card-desc-input ml-4 mt-3" v-if="isShowEdit">
+      <textarea
+        ref="editDesc"
+        cols="30"
+        rows="4"
+        :value="card.desc"
+        @blur="hideEdit"
+        placeholder="Add more detailed information..."
+      ></textarea>
       <footer class="mt-2 d-flex align-items-center">
-        <button class="btn btn-success px-4 py-2">Save</button>
-        <span class="p-2 ml-1" @click="showInput=false">
+        <button class="btn btn-success px-4 py-2" @click="hideEdit">Save</button>
+        <span class="p-2 ml-1" @click="isShowEdit=false">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -39,12 +46,31 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Ref, Vue } from "vue-property-decorator";
 
 @Component
 export default class CardDesc extends Vue {
-  @Prop(String) private desc: string | undefined;
-  showInput = false;
+  @Ref() readonly editDesc!: HTMLInputElement;
+
+  @Prop(Object) private card!: { id: number; listId: number; desc: string };
+
+  isShowEdit = false;
+
+  public enableEdit(): void {
+    this.isShowEdit = true;
+    this.$nextTick(() => {
+      this.editDesc.focus();
+    });
+  }
+  public hideEdit(): void {
+    // this.desc = this.editDesc.value;0
+    this.$store.commit("updateCardDesc", {
+      cardId: this.card.id,
+      listId: this.card.listId,
+      desc: this.editDesc.value
+    });
+    this.isShowEdit = false;
+  }
 }
 </script>
 
@@ -57,6 +83,9 @@ export default class CardDesc extends Vue {
   &:hover {
     background-color: rgba(9, 30, 66, 0.08);
   }
+}
+.card-desc {
+  cursor: pointer;
 }
 .card-desc-empty {
   .desc-btn {
@@ -76,10 +105,13 @@ export default class CardDesc extends Vue {
 .card-desc-input {
   textarea {
     background: #fff;
-    border: 3px solid #0079bf;
+
     border-radius: 5px;
     width: 100%;
     padding: 5px 15px;
+    &:focus {
+      border: 3px solid #0079bf;
+    }
   }
   span {
     svg {

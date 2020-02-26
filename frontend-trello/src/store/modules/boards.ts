@@ -73,6 +73,20 @@ export default class Boards extends VuexModule {
   public insertBoardList(list: BoardList) {
     this.currentBoard.lists.push(list);
   }
+  @Mutation
+  public updateCardDesc(payload: {
+    cardId: number;
+    listId: number;
+    desc: string;
+  }) {
+    const foundList = this.currentBoard.lists.find(
+      list => list.id == payload.listId
+    );
+    if (foundList) {
+      const foundCard = foundList.cards.find(card => card.id == payload.cardId);
+      foundCard ? (foundCard.desc = payload.desc) : "";
+    }
+  }
 
   @Action
   public async getBoardData(id: number) {
