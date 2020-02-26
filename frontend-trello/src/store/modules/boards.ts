@@ -87,6 +87,20 @@ export default class Boards extends VuexModule {
       foundCard ? (foundCard.desc = payload.desc) : "";
     }
   }
+  @Mutation
+  public updateCardTitle(payload: {
+    cardId: number;
+    listId: number;
+    title: string;
+  }) {
+    const foundList = this.currentBoard.lists.find(
+      list => list.id == payload.listId
+    );
+    if (foundList) {
+      const foundCard = foundList.cards.find(card => card.id == payload.cardId);
+      foundCard ? (foundCard.title = payload.title) : "";
+    }
+  }
 
   @Action
   public async getBoardData(id: number) {

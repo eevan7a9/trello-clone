@@ -32,7 +32,7 @@
         <div>
           <div class="d-flex">
             <img src="@/assets/icons/card-header.svg" class="mr-2" />
-            <h4 class="m-0">{{card.title}}</h4>
+            <CardTitle :card="card"></CardTitle>
           </div>
           <small class="text-secondary ml-4 my-0 p-0">
             In list
@@ -47,11 +47,13 @@
 
 <script lang="ts">
 import ModalContent from "@/components/boards/cardModal/ModalContent.vue";
+import CardTitle from "@/components/boards/cardModal/CardTitle.vue";
 import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component({
   components: {
-    ModalContent
+    ModalContent,
+    CardTitle
   }
 })
 export default class BoardCard extends Vue {
