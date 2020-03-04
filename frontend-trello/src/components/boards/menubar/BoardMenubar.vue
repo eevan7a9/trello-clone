@@ -1,25 +1,25 @@
 <template>
   <div class="side-menubar-wrapper bg-light mt-1" :class="{'active' : sidebarStatus}">
     <header class="py-2 px-1 m-0 row border border-bottom bg-light">
-      <span class="icon col-2" @click="selectMenubarItem()" v-if="showItem">
+      <span class="icon col-2" @click="$store.dispatch('selectMenubarItem')" v-if="showItemContent">
         <img src="@/assets/icons/chevron-left.svg" alt="back" />
       </span>
       <span
         class="text-capitalize font-weight-bold text-dark m-0"
-        :class="showItem ? 'col-8': 'pl-5 col-10'"
-      >{{menuHeader}}</span>
+        :class="showItemContent ? 'col-8': 'pl-5 col-10'"
+      >{{menubarTitle}}</span>
       <span class="icon col-2 m-0" @click="toggleMenu">
         <img src="@/assets/icons/x.svg" alt="close" />
       </span>
     </header>
     <!-- Menu items -->
     <div class="menubar-content">
-      <div class="menubar-items p-4" v-if="!showItem">
+      <div class="menubar-items p-4" v-if="!showItemContent">
         <div
-          v-for="(list, index) of lists"
+          v-for="(list, index) of itemsList"
           :key="index"
           class="items text-left"
-          @click="selectMenubarItem(list)"
+          @click="$store.dispatch('selectMenubarItem', list)"
         >
           <img :src="require(`@/assets/icons/${list.icon}`)" class="m-2" />
           <span class="text-capitalize font-weight-bold text-dark">{{list.title}}</span>
@@ -36,8 +36,8 @@
         <BoardActivity></BoardActivity>
       </div>
       <!-- Menubar item's content Starts -->
-      <div class="menubar-items-content" v-else>
-        <component :is="menuContentOf"></component>
+      <div class="menubar-items-content" :class="{'show' : showItemContent}">
+        <component :is="componentName"></component>
       </div>
       <!-- Menubar item's content Ends -->
     </div>
@@ -54,7 +54,13 @@ import MenubarStickers from "@/components/boards/menubar/MenubarStickers.vue";
 import BoardActivity from "@/components/boards/menubar/BoardActivity.vue";
 
 @Component({
-  computed: mapGetters(["sidebarStatus"]),
+  computed: mapGetters([
+    "sidebarStatus",
+    "itemsList",
+    "menubarTitle",
+    "componentName",
+    "showItemContent"
+  ]),
   components: {
     BoardActivity,
     MenubarAbout,
@@ -66,45 +72,8 @@ import BoardActivity from "@/components/boards/menubar/BoardActivity.vue";
 export default class BoardMenubar extends Vue {
   @Prop(Array) private activity: Array<object> | undefined;
 
-  menuHeader = "menu";
-  menuContentOf = "MenubarAbout";
-
-  lists = [
-    {
-      icon: "trello-dark.svg",
-      title: "about this board",
-      contentOf: "MenubarAbout"
-    },
-    {
-      icon: "square-grey.svg",
-      title: "change background",
-      contentOf: "MenubarBackground"
-    },
-    {
-      icon: "search-grey.svg",
-      title: "search cards",
-      contentOf: "MenubarSearchCard"
-    },
-    {
-      icon: "sticker-grey.svg",
-      title: "stickers",
-      contentOf: "MenubarStickers"
-    }
-  ];
-  showItem = false; // when clicked menubar item
   toggleMenu() {
     this.$store.dispatch("toggleMenuSidebar");
-  }
-  selectMenubarItem(
-    list: {
-      icon: string;
-      title: string;
-      contentOf: string;
-    } = { icon: "", title: "menu", contentOf: "" }
-  ) {
-    this.showItem = list.title == "menu" ? false : true;
-    this.menuHeader = list.title;
-    this.menuContentOf = list.title == "menu" ? "" : list.contentOf;
   }
 }
 </script>
@@ -163,6 +132,14 @@ export default class BoardMenubar extends Vue {
             font-size: 15px;
           }
         }
+      }
+    }
+    .menubar-items-content {
+      transform: translateX(339px);
+
+      &.show {
+        transform: translateX(0px);
+        transition: all 0.4s;
       }
     }
   }
