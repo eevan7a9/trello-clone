@@ -1,7 +1,7 @@
 <template>
   <div class="side-menubar-wrapper bg-light mt-1" :class="{'active' : sidebarStatus}">
     <header class="py-2 px-1 m-0 row border border-bottom bg-light">
-      <span class="icon col-2" @click="$store.dispatch('selectMenubarItem')" v-if="showItemContent">
+      <span class="icon col-2" @click="$store.dispatch('setMenubarContent')" v-if="showItemContent">
         <img src="@/assets/icons/chevron-left.svg" alt="back" />
       </span>
       <span
@@ -19,7 +19,7 @@
           v-for="(list, index) of itemsList"
           :key="index"
           class="items text-left"
-          @click="$store.dispatch('selectMenubarItem', list)"
+          @click="$store.dispatch('setMenubarContent', list)"
         >
           <img :src="require(`@/assets/icons/${list.icon}`)" class="m-2" />
           <span class="text-capitalize font-weight-bold text-dark">{{list.title}}</span>
@@ -52,6 +52,7 @@ import MenubarBackground from "@/components/boards/menubar/MenubarBackground.vue
 import MenubarSearchCard from "@/components/boards/menubar/MenubarSearchCard.vue";
 import MenubarStickers from "@/components/boards/menubar/MenubarStickers.vue";
 import BoardActivity from "@/components/boards/menubar/BoardActivity.vue";
+import BackgroundColors from "@/components/boards/menubar/background/BackgroundColors.vue";
 
 @Component({
   computed: mapGetters([
@@ -66,7 +67,8 @@ import BoardActivity from "@/components/boards/menubar/BoardActivity.vue";
     MenubarAbout,
     MenubarBackground,
     MenubarSearchCard,
-    MenubarStickers
+    MenubarStickers,
+    BackgroundColors
   }
 })
 export default class BoardMenubar extends Vue {

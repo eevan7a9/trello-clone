@@ -28,6 +28,13 @@ export default class BoardMenuSidebar extends VuexModule {
       contentOf: "MenubarStickers"
     }
   ];
+  previousContent: {
+    title: string;
+    contentOf: string;
+  } = {
+    title: "",
+    contentOf: ""
+  };
 
   get sidebarStatus(): boolean {
     return this.menuSidebar;
@@ -61,19 +68,43 @@ export default class BoardMenuSidebar extends VuexModule {
     this.menuHeader = list.title;
     this.componentOf = list.title == "menu" ? "" : list.contentOf;
   }
+  @Mutation
+  public updatePrevious(
+    item: {
+      title: string;
+      contentOf: string;
+    } = {
+      title: "",
+      contentOf: ""
+    }
+  ) {
+    this.previousContent = { ...item };
+    console.log(this.previousContent);
+  }
 
   @Action
   public async toggleMenuSidebar() {
     this.context.commit("changeSidebarStatus");
   }
   @Action
-  public selectMenubarItem(
+  public setMenubarContent(
     list: {
       icon: string;
       title: string;
       contentOf: string;
     } = { icon: "", title: "menu", contentOf: "" }
   ) {
-    this.context.commit("updateMenubarUi", list);
+    if (this.previousContent.contentOf) {
+      // load previous content if available
+      this.context.commit("updateMenubarUi", this.previousContent);
+      // then remove state of previous content
+      this.context.commit("updatePrevious", { title: "", contentOf: "" });
+    } else {
+      this.context.commit("updateMenubarUi", list);
+    }
+  }
+  @Action
+  public setPreviousContent(item: { title: string; contentOf: string }) {
+    this.context.commit("updatePrevious", item);
   }
 }

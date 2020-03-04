@@ -12,6 +12,7 @@
         <div
           class="image"
           style="background-image:url(https://a.trellocdn.com/prgb/dist/images/colors@2x.864f4df15d825e89e199.jpg)"
+          @click="showBackground"
         ></div>
         <span class="font-weight-bold">Colors</span>
       </div>
@@ -26,7 +27,24 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class MenubarBackground extends Vue {}
+export default class MenubarBackground extends Vue {
+  colors = {
+    icon: "",
+    title: "Colors",
+    contentOf: "BackgroundColors"
+  };
+  public showBackground() {
+    this.$store.dispatch("setMenubarContent");
+
+    setTimeout(() => {
+      this.$store.dispatch("setMenubarContent", this.colors);
+      this.$store.dispatch("setPreviousContent", {
+        title: "change background",
+        contentOf: "MenubarBackground"
+      });
+    }, 1);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
