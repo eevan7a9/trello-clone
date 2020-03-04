@@ -11,8 +11,8 @@
     </button>
     <div class="dropdown-content mt-3 mr-2 pb-3" :class="{'active': isShown}">
       <header class="py-2 px-1 m-0 row">
-        <span class="col-md-10 text-capitalize text-muted m-0 pl-5">Create</span>
-        <span class="close-icon col-md-2 m-0" @click="toggleDropdown">
+        <span class="col-10 text-capitalize text-muted m-0 pl-5">Create</span>
+        <span class="close-icon col-2 m-0" @click="toggleDropdown">
           <img src="@/assets/icons/x.svg" alt srcset />
         </span>
       </header>
