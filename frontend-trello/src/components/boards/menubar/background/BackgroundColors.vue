@@ -5,6 +5,7 @@
       v-for="color in colors"
       :key="color"
       :style="`background-color:${color}`"
+      @click="$store.dispatch('setBackground', {img:false, content:color})"
     ></div>
   </div>
 </template>

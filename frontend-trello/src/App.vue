@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    :style="`background: ${boardBackground};  background-position: 50%;  background-size: cover;`"
+  >
     <NavbarTop />
     <router-view />
   </div>
@@ -7,7 +10,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import NavbarTop from "@/components/NavbarTop.vue";
+import { mapGetters } from "vuex";
 @Component({
+  computed: {
+    ...mapGetters(["boardBackground"])
+  },
   components: {
     NavbarTop
   }
@@ -22,7 +29,6 @@ export default class ComponentName extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: url(https://cdn.pixabay.com/photo/2020/02/07/14/15/landscape-4827278_960_720.jpg);
   background-position: 50%;
   position: relative;
   background-size: cover;
