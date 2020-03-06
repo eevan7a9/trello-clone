@@ -96,7 +96,7 @@ export default {
 
 .extra-spacer {
   min-width: 339px;
-  background: red;
+
   display: block;
 }
 </style>
