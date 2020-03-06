@@ -53,6 +53,7 @@ import MenubarSearchCard from "@/components/boards/menubar/MenubarSearchCard.vue
 import MenubarStickers from "@/components/boards/menubar/MenubarStickers.vue";
 import BoardActivity from "@/components/boards/menubar/BoardActivity.vue";
 import BackgroundColors from "@/components/boards/menubar/background/BackgroundColors.vue";
+import BackgroundImage from "@/components/boards/menubar/background/BackgroundImage.vue";
 
 @Component({
   computed: mapGetters([
@@ -68,7 +69,8 @@ import BackgroundColors from "@/components/boards/menubar/background/BackgroundC
     MenubarBackground,
     MenubarSearchCard,
     MenubarStickers,
-    BackgroundColors
+    BackgroundColors,
+    BackgroundImage
   }
 })
 export default class BoardMenubar extends Vue {

@@ -3,7 +3,7 @@ import { Module, VuexModule, Action, Mutation } from "vuex-module-decorators";
 @Module
 export default class BoardBackground extends VuexModule {
   background =
-    "url(https://cdn.pixabay.com/photo/2020/02/07/14/15/landscape-4827278_960_720.jpg)";
+    "background-image:url(https://images.unsplash.com/photo-1527901031195-a21e7b21052c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)";
 
   get boardBackground() {
     return this.background;
@@ -16,7 +16,9 @@ export default class BoardBackground extends VuexModule {
   public setBackground(bg: { img: boolean; content: string }) {
     let background = bg.content;
     if (bg.img) {
-      background = `url(${bg.content})`;
+      background = `background-image:url(${bg.content})`;
+    } else {
+      background = `background:${bg.content}`;
     }
     this.context.commit("updateBackground", background);
   }

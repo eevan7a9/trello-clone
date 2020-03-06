@@ -5,6 +5,7 @@
         <div
           class="image"
           style="background-image:url(https://a.trellocdn.com/prgb/dist/images/photos-thumbnail@3x.48948499e309aef794d7.jpg)"
+          @click="showBackground('Photos by Unsplash', 'BackgroundImage')"
         ></div>
         <span class="font-weight-bold">Photos</span>
       </div>
@@ -12,12 +13,11 @@
         <div
           class="image"
           style="background-image:url(https://a.trellocdn.com/prgb/dist/images/colors@2x.864f4df15d825e89e199.jpg)"
-          @click="showBackground"
+          @click="showBackground('Colors', 'BackgroundColors')"
         ></div>
         <span class="font-weight-bold">Colors</span>
       </div>
     </div>
-
     <!-- <img src="@/assets/under_construction.svg" class="img-fluid p-2 my-5" alt="constructing" />
     <h5 class="text-muted text-uppercase font-weight-bold">under construction</h5>-->
   </div>
@@ -33,11 +33,15 @@ export default class MenubarBackground extends Vue {
     title: "Colors",
     contentOf: "BackgroundColors"
   };
-  public showBackground() {
+  public showBackground(title: string, contentOf: string) {
     this.$store.dispatch("setMenubarContent");
 
     setTimeout(() => {
-      this.$store.dispatch("setMenubarContent", this.colors);
+      this.$store.dispatch("setMenubarContent", {
+        icon: "",
+        title: title,
+        contentOf: contentOf
+      });
       this.$store.dispatch("setPreviousContent", {
         title: "change background",
         contentOf: "MenubarBackground"

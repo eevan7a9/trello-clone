@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="app"
-    :style="`background: ${boardBackground};  background-position: 50%;  background-size: cover;`"
-  >
+  <div id="app" :style="boardBackground">
     <NavbarTop />
     <router-view />
   </div>
